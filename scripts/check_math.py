@@ -46,8 +46,11 @@ DISPLAY = re.compile(r"\$\$(.+?)\$\$", re.S)
 
 
 def md_files() -> list[Path]:
+    """仓库内的 Markdown 文件。跳过符号链接：`AGENTS.md` 指向 `CLAUDE.md`，
+    跟进去只会把同一份内容扫两遍。"""
     return sorted(p for p in ROOT.rglob("*.md")
-                  if not any(part in SKIP_DIRS for part in p.parts))
+                  if not any(part in SKIP_DIRS for part in p.parts)
+                  and not p.is_symlink())
 
 
 def in_code_block(lines: list[str], idx: int) -> bool:

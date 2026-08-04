@@ -104,8 +104,11 @@ def main() -> int:
     ap.add_argument("--ref", default="main")
     args = ap.parse_args()
 
+    # 跳过符号链接：GitHub 的网页**不渲染**符号链接（`AGENTS.md` 在网页上显示为一条指向
+    # `CLAUDE.md` 的链接条目，而不是 Markdown 正文），取不到 richText 属于预期而非问题。
     paths = args.paths or [str(p.relative_to(ROOT)) for p in sorted(ROOT.rglob("*.md"))
-                           if not any(x in p.parts for x in SKIP_DIRS)]
+                           if not any(x in p.parts for x in SKIP_DIRS)
+                           and not p.is_symlink()]
     total = 0
     for path in paths:
         body = rendered_html(path, args.ref)

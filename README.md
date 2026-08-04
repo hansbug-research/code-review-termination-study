@@ -48,6 +48,9 @@ derived/
   stats.json                    93 个统计量，正文所有数字的唯一来源
   tables/*.csv                  11 张可复算表
 figures/*.png                   16 张图
+CLAUDE.md                       工作约定 + LaTeX 纪律 + Codex 的 ## Code Review Rules
+AGENTS.md                       → CLAUDE.md 的符号链接（同一份约定，不在两处维护）
+REVIEW.md                       本仓库自身的评审规则（report.md §8.5 模板的实例）
 references.bib                  34 条参考文献的 BibTeX（由脚本生成，勿手工编辑）
 CITATION.cff                    本仓库自身的引用信息，GitHub 据此渲染 "Cite this repository"
 lit/
