@@ -56,6 +56,7 @@ lit/
   quotes.md                     逐字引文档案 + §9 已撤销的 6 条引用 + §10 未引用数值的文献
 audit/
   palette_validation.md         配色校验器输出
+  math_render_audit.md          LaTeX 渲染审计：19 处缺陷的清单、证据与修法
   self_review_log.csv           自审的 |B_n| 曲线原始记录
 scripts/
   collect.py                    D1–D5、D7 采集
@@ -65,6 +66,8 @@ scripts/
   fetch_citation_metadata.py    自 arXiv / DBLP 取回著录信息
   gen_references.py             生成参考文献表与 references.bib，回填 report.md
   lit_digest.py                 文献全文检索工具
+  check_math.py                 Markdown 中 LaTeX 写法检查（E1–E6，CI 会跑）
+  check_rendered.py             抓 GitHub 渲染结果核对公式/表格/图片（发布后手动跑）
   analyze.py                    raw/ → derived/
   plot.py                       derived/ → figures/
   verify.py                     正文 × derived/ 的 195 条断言核对
