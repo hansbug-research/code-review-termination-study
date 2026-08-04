@@ -608,12 +608,11 @@ def fig13_stability_region() -> None:
 
 # ---------------------------------------------------------------- fig16
 def fig16_self_review() -> None:
-    """本报告自审的 |B_n| 曲线（§9.2）。单一序列 → 单色折线 + 直接标注。
+    """两次变更周期各自的 |B_n| 曲线（§9.2、§9.4）。
 
-    数值来自 audit/self_review_log.csv，与 report.md §9.2 的逐条清单一一对应；
-    verify.py 会核对二者一致。
+    两个系列同为「开放的阻塞级发现数」，同轴同量纲，故可并列而无需双轴。数值来自
+    audit/self_review_log.csv，与 report.md 的逐条清单一一对应，由 verify.py 核对。
     """
-    rows = []
     p = ROOT / "audit" / "self_review_log.csv"
     if not p.exists():
         return
@@ -621,22 +620,26 @@ def fig16_self_review() -> None:
         rows = list(csv.DictReader(f))
     if not rows:
         return
-    xs = [int(r["round"]) for r in rows]
-    ys = [int(r["blocking_open"]) for r in rows]
-    fig, ax = plt.subplots(figsize=(7.6, 3.4))
-    ax.plot(xs, ys, color=C[0], linewidth=2, marker="o", markersize=9,
-            markeredgecolor=SURFACE, markeredgewidth=2, zorder=3)
-    for x, y, r in zip(xs, ys, rows):
-        ax.annotate(f'|B_{x-1}| = {y}', (x, y), textcoords="offset points", xytext=(0, 13),
-                    ha="center", color=INK2, fontsize=10)
-        ax.annotate(r["note"], (x, y), textcoords="offset points", xytext=(0, -22),
-                    ha="center", color=MUTED, fontsize=8.6)
-    ax.set_xticks(xs)
-    ax.set_xticklabels([r["label"] for r in rows])
-    ax.set_ylim(-1.2, max(ys) + 1.6)
-    ax.set_xlim(min(xs) - 0.55, max(xs) + 0.55)
-    ax.set_title("本报告自审：阻塞级发现数严格递减至 0（不变量 M，轮数上限 3）", fontsize=12,
-                 pad=12, loc="left")
+    cycles = sorted({int(r["cycle"]) for r in rows})
+    fig, ax = plt.subplots(figsize=(8.4, 3.6))
+    for k, cy in enumerate(cycles):
+        rs = [r for r in rows if int(r["cycle"]) == cy]
+        xs = [int(r["round"]) for r in rs]
+        ys = [int(r["blocking_open"]) for r in rs]
+        ax.plot(xs, ys, color=C[k], linewidth=2, marker="o", markersize=9,
+                markeredgecolor=SURFACE, markeredgewidth=2, zorder=3,
+                label=f"周期 {cy}：{'正文与数据' if cy == 1 else '引用体系'}")
+        for x, y in zip(xs, ys):
+            ax.annotate(f"|B_{x-1}| = {y}", (x, y), textcoords="offset points",
+                        xytext=(0, 12), ha="center", color=INK2, fontsize=9.5)
+    xs_all = sorted({int(r["round"]) for r in rows})
+    ax.set_xticks(xs_all)
+    ax.set_xticklabels([f"第 {x} 轮" for x in xs_all])
+    ax.set_ylim(-0.8, max(int(r["blocking_open"]) for r in rows) + 1.4)
+    ax.set_xlim(min(xs_all) - 0.4, max(xs_all) + 0.4)
+    ax.set_title("两次变更周期的自审：阻塞级发现数均严格递减至 0（不变量 M，轮数上限 3）",
+                 fontsize=11.5, pad=12, loc="left")
+    ax.legend(loc="upper right", fontsize=9)
     finish(ax, ylabel="开放的阻塞级发现数 |B_n|", ygrid=True)
     save(fig, "fig16_self_review_convergence.png")
 

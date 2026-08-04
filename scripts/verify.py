@@ -188,13 +188,21 @@ for h in CB["revert_commit_headlines"]:
 
 # ---------------------------------------------------------------- 自审日志
 LOG = list(csv.DictReader((ROOT / "audit" / "self_review_log.csv").open(encoding="utf-8")))
-BS = [int(r["blocking_open"]) for r in LOG]
-a("自审曲线", " → ".join(str(b) for b in BS))
-for i, b in enumerate(BS):
-    a(f"自审第 {i+1} 轮 |B|", f'$|B_{i}| = {b}$')
-CHECKS.append(("自审曲线严格递减", "B_n 严格递减",
-               all(x > y for x, y in zip(BS, BS[1:]))))
-CHECKS.append(("自审终止于 0", "|B_final| == 0", BS[-1] == 0))
+CYCLES = sorted({int(r["cycle"]) for r in LOG})
+MAX_ROUNDS = 3          # report.md §9.1 声明的协议上限；此处强制它对每个周期都成立
+for cy in CYCLES:
+    rs = [r for r in LOG if int(r["cycle"]) == cy]
+    bs = [int(r["blocking_open"]) for r in rs]
+    a(f"周期 {cy} 的 |B| 曲线", " → ".join(str(b) for b in bs))
+    for i, b in enumerate(bs):
+        a(f"周期 {cy} 第 {i+1} 轮 |B|", f"$|B_{i}| = {b}$")
+    CHECKS.append((f"周期 {cy} 的 |B| 严格递减", "strictly decreasing",
+                   all(x > y for x, y in zip(bs, bs[1:]))))
+    CHECKS.append((f"周期 {cy} 终止于 0", "|B_final| == 0", bs[-1] == 0))
+    # 最后一行是 verifier 终态而非评审轮，故评审轮数为 len(rs) - 1
+    CHECKS.append((f"周期 {cy} 未超过轮数上限 {MAX_ROUNDS}",
+                   f"{len(rs) - 1} <= {MAX_ROUNDS}", len(rs) - 1 <= MAX_ROUNDS))
+a("轮数上限写入正文", f"轮数上限 {MAX_ROUNDS}")
 
 # ---------------------------------------------------------------- 结构性核对
 FIGS = sorted((ROOT / "figures").glob("*.png"))
@@ -221,6 +229,49 @@ a("撤销引用数（正文）", f'**撤销了 {n_revoked} 条引用**')
 LITROWS = list(csv.DictReader((ROOT / "lit" / "manifest.csv").open(encoding="utf-8")))
 a("文献篇数", f'全文核对文献 **{len(LITROWS)} 篇**')
 a("文献篇数（方法节）", f'下载 {len(LITROWS)} 篇论文全文')
+
+# ---------------------------------------------------------------- 引用完整性
+# 正文引用写作 `[[12]](#ref-key)`，参考文献条目写作 `<a id="ref-key"></a>**[12]**`。
+# 二者独立出现在文中，因此「编号 ↔ 文献」的映射可以被机器核对，而不是只能靠人眼比对。
+REFS = json.loads((ROOT / "lit" / "references.json").read_text())
+REF_KEYS = {r["key"] for r in REFS}
+listed = {k: n for k, n in
+          ((m.group(1), int(m.group(2))) for m in
+           re.finditer(r'<a id="ref-([^"]+)"></a>\*\*\[(\d+)\]\*\*', REPORT))}
+cited: dict[str, set[int]] = {}
+for m in re.finditer(r"\[\[(\d+)\]\]\(#ref-([^)]+)\)", REPORT):
+    cited.setdefault(m.group(2), set()).add(int(m.group(1)))
+
+CHECKS.append(("参考文献条目数与 references.json 一致",
+               f"{len(listed)} == {len(REFS)}", len(listed) == len(REFS)))
+CHECKS.append(("参考文献编号连续且从 1 起",
+               "1..N", sorted(listed.values()) == list(range(1, len(listed) + 1))))
+bad_num = {k: (ns, listed.get(k)) for k, ns in cited.items()
+           if ns != {listed.get(k)}}
+CHECKS.append(("正文引用编号与其锚点一致", str(bad_num) or "全部一致", not bad_num))
+orphan = sorted(set(cited) - set(listed))
+CHECKS.append(("不存在指向不存在文献的孤儿引用", str(orphan) or "无", not orphan))
+uncited = sorted(set(listed) - set(cited))
+CHECKS.append(("不存在从未被正文引用的条目", str(uncited) or "无", not uncited))
+CHECKS.append(("参考文献 key 与 references.json 完全对应",
+               str(sorted(set(listed) ^ REF_KEYS)) or "一致", set(listed) == REF_KEYS))
+a("参考文献条数（抬头）", f"参考文献 **{len(REFS)} 条**")
+
+BIB = (ROOT / "references.bib").read_text()
+CHECKS.append(("references.bib 条目数一致",
+               f"{BIB.count('@')-BIB.count('% ')*0} entries",
+               len(re.findall(r"^@\w+\{", BIB, re.M)) == len(REFS)))
+
+CFF = (ROOT / "CITATION.cff").read_text()
+CHECKS.append(("CITATION.cff 存在且声明 cff-version 1.2.0",
+               "cff-version: 1.2.0", "cff-version: 1.2.0" in CFF))
+
+# 每篇下载了全文的文献，要么在 quotes.md 登记了引文，要么在 §10 声明为「未引用其数值」
+Q = QUOTES
+papers = [r for r in REFS if r["kind"] != "web"]
+unregistered = [r["key"] for r in papers if r["key"] not in Q]
+CHECKS.append(("每篇全文文献都在 quotes.md 中有交代",
+               str(unregistered) or "全部有交代", not unregistered))
 
 # stats.json 键数
 a("stats 键数", f'`derived/stats.json`（{len(S)} 个键）')

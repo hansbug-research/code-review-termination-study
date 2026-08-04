@@ -1,6 +1,6 @@
 # PR 评审循环的有穷性：人类工程惯例的机制解剖，与成品 agent harness 内的可执行协议
 
-> 基准日 **2026-08-04** ｜ 一手数据 **2,997 个不同 PR / 102 次 GraphQL 调用** ｜ 图 **16 张** ｜ 可复算表 **11 张** ｜ 机器核对断言 **177 条**（`python3 scripts/verify.py`）｜ 全文核对文献 **22 篇**，其中 **6 条引用因未能在原文定位而撤销**
+> 基准日 **2026-08-04** ｜ 一手数据 **2,997 个不同 PR / 102 次 GraphQL 调用** ｜ 图 **16 张** ｜ 可复算表 **11 张** ｜ 机器核对断言 **195 条**（`python3 scripts/verify.py`）｜ 参考文献 **34 条**（全文核对文献 **22 篇**，其中 **6 条引用因未能在原文定位而撤销**）
 
 ---
 
@@ -35,7 +35,7 @@ agent 侧，我们抓取了 4 个可按作者身份检索的 coding agent 的 1,
 | [§9 自指检验](#9-自指检验本报告自身的评审过程) | 本报告自身的评审过程与 `\|B_n\|` 曲线 |
 | [§10 局限](#10-局限) | 抽样、测量、外推、利益相关性 |
 | [§11 结论](#11-结论) | |
-| [附录](#附录-a数据字典) | 数据字典、复现步骤、文献清单 |
+| [附录](#附录-a数据字典) | 数据字典、图目录、引用方式、参考文献 |
 
 ---
 
@@ -45,7 +45,7 @@ agent 侧，我们抓取了 4 个可按作者身份检索的 coding agent 的 1,
 
 一个 PR 被提交后，评审者给出意见，作者修改，评审者再看，再给意见。这个过程在实践中偶尔会拖到十几轮、跨越数月，参与者的主观体验是「没完没了」。工程社区对此有一个通俗的名字叫 review ping-pong。问题是：这个循环凭什么会停？
 
-朴素的答案是「改到评审者没有意见为止」。这个答案在形式上是空洞的，因为它把终止条件寄托在一个既不可定义也不可判定的谓词上。Google 的评审指南对此有一句写得极为坦率的话，它承认了这个谓词根本不存在：
+朴素的答案是「改到评审者没有意见为止」。这个答案在形式上是空洞的，因为它把终止条件寄托在一个既不可定义也不可判定的谓词上。Google 的评审指南[[31]](#ref-google-standard)对此有一句写得极为坦率的话，它承认了这个谓词根本不存在：
 
 > "there is no such thing as 'perfect' code—there is only *better* code."
 
@@ -105,11 +105,11 @@ $$
 
 **发散源 II：阻塞判定不可判定（taste）。** $B_n$ 的成员资格依赖于一个无法被外部证据裁决的谓词。「这个抽象不够干净」没有终止条件，因为不存在能判定它的裁决程序。
 
-**发散源 III：否决权对称（deadlock）。** 若作者与评审者具有对等且可无限期行使的否决权，博弈没有均衡点。Apache 的 veto 是这一形态的极端制度化：`-1` 不能被投票推翻，只能由投票者本人撤回。
+**发散源 III：否决权对称（deadlock）。** 若作者与评审者具有对等且可无限期行使的否决权，博弈没有均衡点。Apache 的 veto[[23]](#ref-apache-voting) 是这一形态的极端制度化：`-1` 不能被投票推翻，只能由投票者本人撤回。
 
 ### 2.4 有效界
 
-给循环加「上限」是显然的对策，但**界的存在不等于界有效**。这一区分由无界 agent 循环的研究给出了精确表述（arXiv 2607.01641，全文核对见 `lit/quotes.md` §2.3）：
+给循环加「上限」是显然的对策，但**界的存在不等于界有效**。这一区分由无界 agent 循环的研究[[8]](#ref-2607.01641)给出了精确表述（全文核对见 [`lit/quotes.md`](lit/quotes.md) §2.3）：
 
 > "Loops are common and often legitimate in agent applications, but they become unsafe when a feedback path can repeatedly trigger costly or state-growing operations **without an effective bound that constrains the controller and covers the repeated path**."
 
@@ -119,11 +119,11 @@ $$
 
 > **推论**：给 dev agent 与 reviewer agent 各自设置 `max_turns`，**不构成对 dev↔reviewer 这条边的有效界**。内层 sub-agent 的回合上限只约束该 sub-agent 的单次调用，不支配外层循环的重入次数；外层每重入一次，内层预算就重置一次。界必须设在环路本身上。
 
-该研究在 6,549 个 agent 仓库上报告 74 项潜在发现，人工确认 **68 个真实的无界循环，横跨 47 个项目，精度 91.9%**。其对应用开发者的建议是明示的：不要依赖模型自行停止发出工具调用或终止消息。
+该研究[[8]](#ref-2607.01641)在 6,549 个 agent 仓库上报告 74 项潜在发现，人工确认 **68 个真实的无界循环，横跨 47 个项目，精度 91.9%**。其对应用开发者的建议是明示的：不要依赖模型自行停止发出工具调用或终止消息。
 
 ### 2.5 自迭代的稳定性判据
 
-当作者与评审者由同一族模型承担时，「再迭代一轮是否有益」本身成为一个可判定的量化问题。将模型在单题上的正确性视为 $\{正确, 错误\}$ 两状态马尔可夫链，定义（arXiv 2604.22273，`lit/quotes.md` §2.1，逐字核对）：
+当作者与评审者由同一族模型承担时，「再迭代一轮是否有益」本身成为一个可判定的量化问题。将模型在单题上的正确性视为 $\{正确, 错误\}$ 两状态马尔可夫链，定义[[13]](#ref-2604.22273)（[`lit/quotes.md`](lit/quotes.md) §2.1，逐字核对）：
 
 $$
 \mathrm{EIR}(k) = P\big(c^{(k+1)} = 0 \mid c^{(k)} = 1\big), \qquad
@@ -181,9 +181,10 @@ D1/D2 的 5 个仓库为 `kubernetes/kubernetes`、`rust-lang/rust`、`nodejs/no
 全部产物可从落盘的原始数据离线重算，不需要网络：
 
 ```bash
-python3 scripts/analyze.py     # raw/ → `derived/stats.json`（93 个键）+ derived/tables/*.csv（11 张）
-python3 scripts/plot.py        # derived/ → figures/*.png（16 张）
-python3 scripts/verify.py      # 正文的每个数字 vs derived/stats.json（177 条断言）
+python3 scripts/analyze.py         # raw/ → `derived/stats.json`（93 个键）+ derived/tables/*.csv（11 张）
+python3 scripts/plot.py            # derived/ → figures/*.png（16 张）
+python3 scripts/gen_references.py  # lit/references.json → 附录 D 的文献表 + references.bib
+python3 scripts/verify.py          # 正文的每个数字与每条引用 vs 落盘数据（195 条断言）
 ```
 
 重新采集（会产生新的基准日，数值将与本文不同）：
@@ -193,6 +194,7 @@ python3 scripts/collect.py                    # D1–D5, D7
 python3 scripts/collect_d2_nodejs_fallback.py # D2 的 nodejs/node 降级取数路径
 python3 scripts/collect_d8_authors.py         # D8
 python3 scripts/fetch_literature.py           # 22 篇全文（不随仓库分发）
+python3 scripts/fetch_citation_metadata.py    # 自 arXiv / DBLP 取回著录信息
 ```
 
 ### 3.3 采集缺口的显式记录
@@ -257,19 +259,19 @@ python3 scripts/fetch_literature.py           # 22 篇全文（不随仓库分�
 
 | 结论 | 依赖类型 | 当下参考价值 | 判定理由 |
 |---|---|---|---|
-| LLM 不能内生自我纠错（GPT-3.5 / GPT-4 时代） | 能力型 | ⚠️ **结论过期，机制保留** | 已被 EIR/ECR 框架取代（§2.5）；机制（净收益由两个转移率之比决定）仍然正确，判据须更换 |
-| 迭代精修产生 in-context reward hacking | 结构型 | ✅ 有效 | 只要「用不完美 evaluator 做优化目标」这一结构不变，压力就存在 |
-| 自偏好在多轮中被放大 | 混合 | 🟡 部分有效 | 结构性成分保留；放大幅度随模型改善，需重测 |
-| 增益集中在前 1–2 轮 | 结构型 | ✅ 有效 | 错误密度递减的算术必然，与能力无关 |
-| 无界 agent 循环的分类与「有效界」判据 | 结构型 | ✅ 完全有效 | 讨论的是界的作用域，与模型无关 |
-| CRA-only PR 合并率 45.20%、信噪比 <60% | 产品能力型 | ❌ 应视为 2025 年中快照 | 数据截止 2025-08-01 |
-| CodeRabbit 评论 56.3% 被拒 | 产品能力型 | ❌ 同上 | 同上 |
-| 人类审查 AI 代码的习惯化（批准率 ↑、行内评论 ↓22%） | 人类行为 | 🟡 趋势可信，幅度待重测 | 注意力经济学不会一年内变，但自变量（AI PR 质量）变了 |
-| 人类侧全部工程惯例（Google / Node.js / k8s / Rust / Apache / GitLab） | 组织设计型 | ✅ 完全有效 | 社会协议；跨组织独立收敛这一事实本身即为其稳定性证据 |
+| LLM 不能内生自我纠错（GPT-3.5 / GPT-4 时代）[[9]](#ref-2310.01798) | 能力型 | ⚠️ **结论过期，机制保留** | 已被 EIR/ECR 框架取代（§2.5）；机制（净收益由两个转移率之比决定）仍然正确，判据须更换 |
+| 迭代精修产生 in-context reward hacking[[15]](#ref-2407.04549) | 结构型 | ✅ 有效 | 只要「用不完美 evaluator 做优化目标」这一结构不变，压力就存在 |
+| 自偏好在多轮中被放大[[20]](#ref-2402.11436) | 混合 | 🟡 部分有效 | 结构性成分保留；放大幅度随模型改善，需重测 |
+| 增益集中在前 1–2 轮[[14]](#ref-2303.17651) | 结构型 | ✅ 有效 | 错误密度递减的算术必然，与能力无关 |
+| 无界 agent 循环的分类与「有效界」判据[[8]](#ref-2607.01641) | 结构型 | ✅ 完全有效 | 讨论的是界的作用域，与模型无关 |
+| CRA-only PR 合并率 45.20%、信噪比 <60%[[4]](#ref-2604.03196) | 产品能力型 | ❌ 应视为 2025 年中快照 | 数据截止 2025-08-01 |
+| CodeRabbit 评论 56.3% 被拒[[12]](#ref-2607.03316) | 产品能力型 | ❌ 同上 | 同上 |
+| 人类审查 AI 代码的习惯化（批准率 ↑、行内评论 ↓22%）[[22]](#ref-2606.22721) | 人类行为 | 🟡 趋势可信，幅度待重测 | 注意力经济学不会一年内变，但自变量（AI PR 质量）变了 |
+| 人类侧全部工程惯例（Google / Node.js / k8s / Rust / Apache / GitLab）[[31]](#ref-google-standard)[[33]](#ref-nodejs-collaborator)[[32]](#ref-k8s-pr)[[34]](#ref-rfcbot)[[23]](#ref-apache-voting)[[30]](#ref-gitlab-review) | 组织设计型 | ✅ 完全有效 | 社会协议；跨组织独立收敛[[17]](#ref-rigby2013)这一事实本身即为其稳定性证据 |
 
 ### 4.3 承重引文
 
-时效性论证的全部重量压在一句话上。2026 年这批 AI code review 实证研究几乎全部构建于同一个数据集之上，而该数据集的采集窗口在其论文中有逐字表述（`lit/quotes.md` §1.1）：
+时效性论证的全部重量压在一句话上。2026 年这批 AI code review 实证研究几乎全部构建于同一个数据集[[11]](#ref-2602.09185)之上，而该数据集的采集窗口在其论文中有逐字表述（[`lit/quotes.md`](lit/quotes.md) §1.1）：
 
 > "\aidev comprises 932,791 \agentprs authored by five agents: \codex, \devin, \copilot, \cursor, and \claude, across 116,211 repositories involving 72,189 developers (**dataset cutoff: August 1, 2025**)."
 
@@ -279,7 +281,7 @@ python3 scripts/fetch_literature.py           # 22 篇全文（不随仓库分�
 
 **图 12**：各文献的证据窗口与本报告基准日的关系。这不意味着这些论文没用，而是**用途要改**：它们不再是「当下能力上限」的证据，而是「**放任不管会发生什么**」的历史对照组。§7 中我们对同类问题在当下重新取数，并把两者并置。
 
-一个必须一并引用的限定来自同批文献中关于 agent 接受率的研究：**任务类型比 agent 身份更能解释接受率差异**（documentation 82.1% vs new features 66.1%，16 个百分点的差距超过多数任务上的 agent 间方差）。本报告因此**不引用任何 agent 之间的总体排名**（早期草稿中的一组排名已撤销，见 `lit/quotes.md` §9.2）。
+一个必须一并引用的限定来自同批文献中关于 agent 接受率的研究[[16]](#ref-2602.08915)：**任务类型比 agent 身份更能解释接受率差异**（documentation 82.1% vs new features 66.1%，16 个百分点的差距超过多数任务上的 agent 间方差）。本报告因此**不引用任何 agent 之间的总体排名**（早期草稿中的一组排名已撤销，见 `lit/quotes.md` §9.2）。
 
 ---
 
@@ -384,6 +386,22 @@ D1 的 500 个已合并 PR 中：
 
 **结论：一个 112 天的 PR 不是「无限循环」，而是一条每步都有明确等待原因和确定终止条件的长流水线。长 ≠ 不收敛。** 这个区分对设计 AI 系统极其重要：优化目标应该是「消除无界重触发」，而不是「压缩总时长」。
 
+### 5.5 与既有文献基线的对照
+
+本报告的人类侧测量并非在真空中进行。把它与已发表的基线并置，既是外部效度检验，也能暴露哪些是新增证据、哪些只是复现。下表中的文献数值全部经全文核对并登记于 [`lit/quotes.md`](lit/quotes.md) §3。
+
+| 文献结论（及其证据窗口） | 文献值 | 本报告实测（2026-08-04） | 判读 |
+|---|---|---|---|
+| 「超过 80% 的变更至多经历一轮作者—回应迭代」，Google，9,000,000 个变更，2014-01 至 2016-07[[18]](#ref-sadowski2018) | >80% | 97.8% 的已合并 PR 零正式阻塞态；review 提交中位 1 | **方向一致但口径不同**：文献计的是迭代轮次，本报告计的是正式阻塞态。二者共同支持「返工不通过阻塞态进行」 |
+| 「通常只需一名 reviewer 批准」[[18]](#ref-sadowski2018) | 1 | `APPROVED` 次数中位 1；案例 A 全程仅 1 次 | **一致** |
+| 评审参数在完全不同的组织间独立收敛到相近值[[17]](#ref-rigby2013) | — | 5 个仓库零阻塞态 93.0%–100.0%，跨组织高度一致；但 review 提交中位 0–3、合并耗时中位 11.6–235.1 h 差异极大 | **部分一致**：阻塞态的稀有性收敛，节奏与讨论量不收敛 |
+| 评论数是评审延迟的最强单一预测因子；churn、规模与讨论长度合计解释已解释方差的 67%，103,284 个 PR / 40 个项目[[21]](#ref-yu2015) | R²=46.1% | 本报告不做回归，未复现 | **不适用**，但其含义支持 §6 的「小 diff」建议 |
+| 评审的核心难点是**理解**变更而非判断其对错[[2]](#ref-bacchelli2013) | — | 案例 A 中 48/49 次 review 为 `COMMENTED`（讨论），仅 1 次为批准 | **一致**，且提示 AI 最该做的是帮人更快理解 diff，而非替人下判断 |
+| 整合者侧的工作实践与拒绝沟通困难，749 位整合者问卷[[6]](#ref-gousios2015)；贡献者侧的对应研究[[7]](#ref-gousios2016) | — | D2 中 51.2% 的失败 PR 从未被 review——沟通根本没有发生 | **一致且更极端**：文献描述的是「解释拒绝很难」，本报告观察到的是「多数根本不解释」 |
+| 评审参与度本身是被研究的对象[[19]](#ref-thongtanunam2016) | — | D1 中人类 reviewer 数中位 0–3，逐仓库差异极大 | 提供当下截面，未与其数值比对 |
+
+**必须指出的时效性不对称。** Google 那组数字的证据窗口是 2014-01 至 2016-07，距本报告基准日约十年。按 §4.1 的极限判据，它属于**组织设计型**结论，其稳定性不由数据新鲜度支持，而由跨组织独立收敛这一事实支持。本报告的实测在方向上复现了它，这本身就是对该判定的一次弱检验。
+
 ---
 
 ## 6. 机制归纳：四类终止装置
@@ -394,13 +412,13 @@ D1 的 500 个已合并 PR 中：
 
 **对治发散源 II（谓词不可判定）**。做法是把「意见」按裁决依据分类，只有可被外部权威裁决的那一类保留阻塞力，其余在协议上降级。
 
-Google 的评审标准把这条称为所有评审准则中**最高级**的一条：
+Google 的评审标准[[31]](#ref-google-standard)把这条称为所有评审准则中**最高级**的一条：
 
 > "reviewers should favor approving a CL once it is in a state where it definitely improves the overall code health of the system being worked on, even if the CL isn't perfect."
 
 > "That is *the* senior principle among all of the code review guidelines."
 
-GitLab 的表述最具可操作性，因为它直接规定了状态推进条件而非态度：
+GitLab 的表述[[30]](#ref-gitlab-review)最具可操作性，因为它直接规定了状态推进条件而非态度：
 
 > "When only non-blocking suggestions remain, move the MR to the next stage rather than waiting."
 
@@ -408,7 +426,7 @@ GitLab 的表述最具可操作性，因为它直接规定了状态推进条件�
 
 > "Enforce code style through automation rather than review comments."
 
-Node.js 则从反面把「表达异议」与「构成否决」在协议层分开：
+Node.js[[33]](#ref-nodejs-collaborator) 则从反面把「表达异议」与「构成否决」在协议层分开：
 
 > "Collaborators can object to a pull request by using the \"Request Changes\" GitHub feature."
 
@@ -422,7 +440,7 @@ Node.js 则从反面把「表达异议」与「构成否决」在协议层分开
 
 **对治发散源 I 与 III**：即便意见集合非单调、即便存在僵持，墙钟也会强制推进。
 
-Node.js 的条款是本报告见过最完备的一组有穷性协议：
+Node.js 的条款[[33]](#ref-nodejs-collaborator)是本报告见过最完备的一组有穷性协议：
 
 > "Before landing pull requests, allow 48 hours for input from other collaborators."
 
@@ -434,7 +452,7 @@ Node.js 的条款是本报告见过最完备的一组有穷性协议：
 
 > "If the objector is unresponsive for seven days after a collaborator asks for clarification, a collaborator may dismiss the objection."
 
-Kubernetes 的时钟作用在 PR 整体寿命上，且把理由写得很清楚：
+Kubernetes 的时钟[[32]](#ref-k8s-pr)作用在 PR 整体寿命上，且把理由写得很清楚：
 
 > "Pull requests older than 90 days will be closed."
 
@@ -442,7 +460,7 @@ Kubernetes 的时钟作用在 PR 整体寿命上，且把理由写得很清楚�
 
 **后一句是整条政策的机制设计核心：它把「重新开始」的成本压到低于「无限继续」。** §5.2 中 kubernetes 60.0% 的关闭未合并 PR 带有生命周期标签、开放天数中位 132.7 天，正是这条政策的执行痕迹。
 
-Rust 的 FCP（Final Comment Period）是时钟与仲裁的混合形态。经复核，rfcbot 的机制要点是：
+Rust 的 FCP（Final Comment Period）是时钟与仲裁的混合形态。经复核，rfcbot[[34]](#ref-rfcbot) 的机制要点是：
 
 > "To register blocking concerns on the FCP proposal, use `@rfcbot concern NAME_OF_CONCERN`."
 
@@ -454,7 +472,7 @@ Rust 的 FCP（Final Comment Period）是时钟与仲裁的混合形态。经复
 
 **对治发散源 III（对称否决）**。核心是让否决权非对称，并给否决本身设置举证成本。
 
-Apache 的条款是这一思路的极端形式，同时包含了「不可推翻」与「必须举证」两面：
+Apache 的条款[[23]](#ref-apache-voting)是这一思路的极端形式，同时包含了「不可推翻」与「必须举证」两面：
 
 > "it cannot be overruled nor overridden by anyone. Vetoes stand until and unless the individual withdraws their veto."
 
@@ -462,14 +480,14 @@ Apache 的条款是这一思路的极端形式，同时包含了「不可推翻�
 
 **后一句是本报告认为最值得移植到 AI 系统的单条规则**：否决权不是免费的，行使它必须付出举证成本，且举证不合格时否决**自动无效**——不需要任何人去推翻它。§8.2 的不变量 2 就是这条规则的机器化。
 
-Kubernetes 把「代码质量」与「合并授权」拆成两个正交信号，构成权限型仲裁的教科书实现：
+Kubernetes[[32]](#ref-k8s-pr) 把「代码质量」与「合并授权」拆成两个正交信号，构成权限型仲裁的教科书实现：
 
 > `/lgtm`：由 OWNERS 中的 reviewer 给出，"is a signal that the code has passed review from one or more trusted reviewers"
 > `/approve`：由 OWNERS 中的 approver 给出，signals "that the code has passed final review and is ready to be automatically merged"
 
 两个标签齐备且 CI 通过后，PR 进入 Tide 合并池，"If tests pass, Tide automatically merges the pull request"——**终局由机器执行，人不再介入**。而 `/hold` 与 `WIP` 前缀提供了显式的暂停通道："While either label is present, your pull request will not be considered for merging."
 
-GitLab 的仲裁则通过角色定义实现，其特点是**把批准与长期责任绑定**：
+GitLab 的仲裁[[30]](#ref-gitlab-review)则通过角色定义实现，其特点是**把批准与长期责任绑定**：
 
 > "Reviewers are responsible for reviewing the specifics of the chosen solution."
 
@@ -477,7 +495,7 @@ GitLab 的仲裁则通过角色定义实现，其特点是**把批准与长期�
 
 > "when there is a production incident, the maintainer may get paged to help resolve issues"
 
-最后是升级路径的强制性。Google 的条款是命令式的：
+最后是升级路径的强制性。Google 的条款[[31]](#ref-google-standard)是命令式的：
 
 > "Don't let a CL sit around because the author and the reviewer can't come to an agreement."
 
@@ -485,7 +503,7 @@ GitLab 的仲裁则通过角色定义实现，其特点是**把批准与长期�
 
 **这是把循环变成尾递归的技巧**：剩余分歧不在本 PR 内解决，而是转化为别的工件。它同时对治三个发散源，因为它直接减小 $|B_n|$ 的定义域。
 
-Node.js 把「合并后发现问题」明确设为正常路径而非异常：
+Node.js[[33]](#ref-nodejs-collaborator) 把「合并后发现问题」明确设为正常路径而非异常：
 
 > "Mistakes do happen. If a pull request is merged with an unresolved objection, submit a fix."
 
@@ -534,6 +552,8 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 
 **图 6**：合并耗时。两层相差约一个数量级（39.6 分钟 vs 683.3 分钟），而人类对照是 67.8 小时。
 
+与之互补的一条既有证据是对 agentic PR 修复被拒原因的定性研究[[1]](#ref-2606.13468)：其归纳出的四类拒绝原因中，「实现不正确」与「未通过 CI」两类都指向同一个对策方向——**把可自动判定的部分交给 verifier**，这与 §8.1 的分层一致。该研究同属 2025 年中窗口，故此处只取其定性归纳。
+
 ![图 4](figures/fig04_gate_strength_by_repo_maturity.png)
 
 **图 4**：两个口径下的门禁缺失率。**这张图是本报告最核心的一张**，读法必须小心：灰条（宽口径）在人类侧被旁路批准严重污染（§3.4），蓝条（严格口径）在两侧都可能被机器人评论稀释。可靠的比较只有一种——**在同一口径内跨组比较**。
@@ -578,9 +598,11 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 
 **图 10**：机器人 review 输出中非机械失败的比例。判据是显式自述失败的模板句（"unable to review"、"no eligible user to bill"、"could not review"、"quota"、"rate limit" 等），**不做任何语义判断**。因此 43.55% 是实质内容占比的**上界**——真正空洞但语法完整的评论无法用这个判据识别。
 
+同一时期另有研究专门刻画 reviewer bot 在 agentic PR 上留下的痕迹[[5]](#ref-2604.24450)，其证据窗口同属 §4.3 所述的 2025 年中快照，故本报告只用其问题设定、不引用其数值。
+
 **这个数字的正确解读方式不是「AI reviewer 很差」，而是「集成没做对」。** 机械失败模板的含义是 reviewer 根本没有运行（计费失败、配额耗尽），而不是运行后给出了低质量意见。**这是一个纯粹的运维缺陷，与模型能力无关**，而它在生产环境里持续了整整 50 个 PR 没有被任何人关掉——这恰好是 §2.4 所说的「反馈路径上没有有效界」的实例：失败是静默的，没有任何机制在计数。
 
-同时必须给出人类基线以避免双重标准。人类 reviewer 评论的有用率经全文核对为：
+同时必须给出人类基线以避免双重标准。人类 reviewer 评论的有用率经全文核对[[3]](#ref-bosu2015)为：
 
 > "Interestingly, all projects have a similar comment usefulness density between 64% and 68%."
 
@@ -623,7 +645,7 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 
 ## 8. 边界内的解决方案
 
-本节回答 RQ4。结论先行：**§2 推导的不变量，成品 harness 已经实现了其中大部分**，需要做的是配置、排序、以及用 hooks 补齐硬约束。本节所有关于产品能力的陈述均于 2026-08-04 回官方文档逐条复核，未能在文档中找到依据的一律标注为「文档未涵盖」。
+本节回答 RQ4。关于「评审在 AI 时代应当变成什么形态」已有专门的立场性讨论[[10]](#ref-2605.17548)，本节不重复其愿景层面的论证，只处理一个更窄也更可执行的问题：在既有产品能力之内，如何把 §2 的不变量落成配置。结论先行：**§2 推导的不变量，成品 harness 已经实现了其中大部分**，需要做的是配置、排序、以及用 hooks 补齐硬约束。本节所有关于产品能力的陈述均于 2026-08-04 回官方文档逐条复核，未能在文档中找到依据的一律标注为「文档未涵盖」。
 
 ### 8.1 三层分工：按可绕过性划分，而非按功能划分
 
@@ -637,7 +659,7 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 
 **推论**：任何需要保证的性质都必须放在 L1 或 L2；放在 L3 的只能是「倾向」。这条推论同时解释了为什么自建编排框架在本问题上没有增量——若自建层仍由模型驱动决策，它就还在 L3；而它能提供的确定性控制（预算、门禁），L1 与 L2 已经提供了。
 
-**同时必须指出这层分工的一个真实缺口**：官方 hooks 文档**并未说明** `.claude/settings.json` 中的 hooks 在 GitHub Actions runner 上的加载行为与信任条件。可以从文档确定的只有：`.claude/settings.local.json` 是 gitignore 的，因此不会出现在 CI 的检出中；而项目级 subagent 的 frontmatter hooks 需要通过工作区信任对话框。**因此不应假定本地 hooks 会在 CI 中生效——CI 侧的护栏必须在 workflow 里另写。**
+**同时必须指出这层分工的一个真实缺口**：官方 hooks 文档[[26]](#ref-cc-hooks)**并未说明** `.claude/settings.json` 中的 hooks 在 GitHub Actions runner 上的加载行为与信任条件。可以从文档确定的只有：`.claude/settings.local.json` 是 gitignore 的，因此不会出现在 CI 的检出中；而项目级 subagent 的 frontmatter hooks 需要通过工作区信任对话框。**因此不应假定本地 hooks 会在 CI 中生效——CI 侧的护栏必须在 workflow 里另写。**
 
 ### 8.2 五条协议不变量
 
@@ -657,7 +679,7 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 
 #### Claude Code
 
-**（A）本地内环：`/code-review`**
+**（A）本地内环：`/code-review`**[[24]](#ref-cc-code-review)
 
 | 能力 | 文档表述 |
 |---|---|
@@ -669,7 +691,7 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 
 **「独立上下文的后台 subagent」这一条直接实现了不变量 3**，且是免费的：它天然不携带主会话的修改轨迹。反过来说，**在主会话里让同一个 agent 自审自改，等于把 reward hacking 的结构原样复现**——这是本问题上最省力的一个正确决定。
 
-**（B）托管外环：Code Review（研究预览，Team/Enterprise，ZDR 组织不可用）**
+**（B）托管外环：Code Review[[24]](#ref-cc-code-review)（研究预览，Team/Enterprise，ZDR 组织不可用）**
 
 这个产品基本就是本报告不变量的产品化，逐条对应：
 
@@ -696,7 +718,7 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 
 > **Nit volume**: "A cap like *report at most five nits, mention the rest as a count in the summary* keeps reviews actionable."（＝机制①）
 
-**（C）自建 CI：`anthropics/claude-code-action@v1`**
+**（C）自建 CI：`anthropics/claude-code-action@v1`**[[25]](#ref-cc-github-actions)
 
 `prompt` 可直接是一个 skill 调用；`claude_args` 透传任意 CLI 参数，其中 **`--max-turns` 默认为 10**。官方成本建议原文即包含界的设置：
 
@@ -704,7 +726,7 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 > "Set workflow-level timeouts to avoid runaway jobs"
 > "Consider using GitHub's concurrency controls to limit parallel runs"
 
-**（D）hooks：唯一的 L2 确定性层**
+**（D）hooks：唯一的 L2 确定性层**[[26]](#ref-cc-hooks)
 
 | Hook | 能否阻塞 | exit 2 的效果 |
 |---|---|---|
@@ -723,7 +745,7 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
 
 **一处诚实的未确认项**：`Stop` hook 需要判断本轮是否已由 hook 强制续跑，否则 hook 自身会构成新的无界循环。本次复核抓取的文档片段在 `Stop` 事件的输入 schema 处被截断，**未能确认该字段名**（惯例上为 `stop_hook_active`）。实现时应以 `jq -r '.stop_hook_active // false'` 兜底并在自己的环境中验证一次。本报告不把未确认的字段名当作已知事实。
 
-#### Codex
+#### Codex[[27]](#ref-codex-github)[[28]](#ref-codex-review-usecase)
 
 | 能力 | 文档表述 |
 |---|---|
@@ -771,7 +793,7 @@ D3 覆盖 4 个 agent 的 **1,600 个已合并 PR**，分布在 **432 个仓库*
                     merge（+ follow-up issue 承接 🟡）
 ```
 
-**「AI 在前、人类在后」而非并行**，依据是 GitLab 现行文档中那条明文排序规则：
+**「AI 在前、人类在后」而非并行**，依据是 GitLab 现行文档[[30]](#ref-gitlab-review)中那条明文排序规则：
 
 > "Address all GitLab Duo review comments before requesting a review from human reviewers."
 
@@ -917,18 +939,16 @@ exit 0
 
 | 不变量 | 本报告的执行方式 |
 |---|---|
-| L1 verifier 先行 | `scripts/verify.py` 对正文的 **177 条**数字断言逐条比对 `derived/stats.json`；`scripts/analyze.py` 与 `scripts/plot.py` 可离线重跑。**verifier 全绿是进入评审的前置条件** |
+| L1 verifier 先行 | `scripts/verify.py` 对正文的 **195 条**数字断言逐条比对 `derived/stats.json`；`scripts/analyze.py` 与 `scripts/plot.py` 可离线重跑。**verifier 全绿是进入评审的前置条件** |
 | 不变量 2（证据兑现） | 正文中的每个数字必须能在 `derived/stats.json` 中找到对应键；每条文献数值必须先在 `lit/quotes.md` 登记逐字原文。**拿不出证据的一律撤销**——数据侧撤销 2 项（早期 n=16 结论、按 PR 计数的成熟层比较），文献侧撤销 6 条，工程条款侧撤销 2 条 |
 | 不变量 1（单调性） | 第 2 轮起只处理本轮新增内容与上一轮遗留的阻塞项，不重新通读已通过章节 |
 | 不变量 3（无轨迹） | 评审在独立上下文中进行，不携带撰写过程 |
 | 不变量 4（有效界） | 轮数上限 3；`no_progress` 判据为「连续 2 轮 $\|B_n\|$ 未减少」 |
 | 不变量 5（出口穷尽） | 未处理的非阻塞项不得留在正文里悬置，必须移入 §9.3 的 follow-up 清单（机制④） |
 
-### 9.2 $|B_n|$ 曲线
+### 9.2 第一个变更周期：正文与数据
 
-![图 16](figures/fig16_self_review_convergence.png)
-
-**图 16**：三轮自审中阻塞级发现数量的变化。逐轮内容如下。
+本周期评审的是报告正文与其依据的数据处理。曲线见图 16（与 §9.4 的第二周期并列绘制）。逐轮内容如下。
 
 **第 1 轮（$|B_0| = 5$）** — 由 verifier 与结构性自查产出：
 
@@ -973,7 +993,27 @@ exit 0
 | F5 | 未实测本仓库场景下的 EIR/ECR | §2.5 已声明这是需在各自代码库上测量的量，本报告不提供代测 |
 | F6 | Cursor / Codex 因不以 App 身份提交而无法纳入 D3 | 结构性限制，已记入 §10 |
 
-### 9.4 一处必须承认的不符合项
+### 9.4 第二个变更周期：引用体系
+
+本报告的第一版把参考文献处理成了附录里的一份名单：正文中没有引用锚点，读者要核对某个论断依据的是哪一篇、哪一处，只能靠标题在附录里手工比对。**这是一处真实的可追溯性缺陷，由外部评审指出**——它没有被前一个周期的三轮自审发现，因为 verifier 当时完全不覆盖引用（这与 B9 是同一类失效：未被 L1 覆盖的部分，评审的召回率不可靠）。
+
+修复的做法必须与本报告对数值的要求一致：**著录信息不能手写**。因此新增 [`scripts/fetch_citation_metadata.py`](scripts/fetch_citation_metadata.py) 从 arXiv Atom API 与 DBLP 检索 API 取回全部著录信息（作者、会议/期刊、年份、DOI）并落盘为 [`lit/references.json`](lit/references.json)，再由 [`scripts/gen_references.py`](scripts/gen_references.py) 生成参考文献表与 [`references.bib`](references.bib)。正文引用写作 `[[18]](#ref-sadowski2018)`，链接目标带 key，使「编号 ↔ 文献」的映射本身可被机器核对。
+
+这一变更按同一协议评审，曲线为 3 → 0，第 1 轮 $|B_0| = 3$：
+
+| # | 阻塞级发现 | 证据 | 处置 |
+|---|---|---|---|
+| C1 | DBLP 标题匹配用的是**单向覆盖率**，对「包含全部查询词的更长标题」恒为 1.0，因而把 `thongtanunam2016` 匹配到了另一篇论文（Ruangwan 等，*Empirical Software Engineering* 2019） | 命中标题与 manifest 标题不同，相似度却报 1.0 | 已修：改为对称的 Jaccard 相似度，并对被缩写的标题提供检索覆盖；复核后 8 条非 arXiv 文献全部匹配正确 |
+| C2 | 有 5 篇下载了全文的文献从未在正文被引用，参考文献表将包含未被引用的条目 | `2604.24450`、`2605.17548`、`2303.17651`、`gousios2016`、`thongtanunam2016` 在 `quotes.md` 中命中数为 0 | 已修：为其补上下文引用（不引用任何数值），并在 [`lit/quotes.md`](lit/quotes.md) §10 显式声明「无任何数值依赖于它们」 |
+| C3 | 取数脚本在 DBLP 限流返回 HTML 时抛 `JSONDecodeError` 中断整批，与 §3.3「记录缺口而非中断」的原则冲突 | 首次运行即在第 15 条中断 | 已修：`curl()` 增加响应类型校验与指数退避 |
+
+**终态（$|B_1| = 0$）** — 由 verifier 确认，新增 6 条引用完整性断言：参考文献条目数与 `references.json` 一致、编号连续、正文引用编号与其锚点一致、无孤儿引用、无未被引用条目、`references.bib` 条目数一致。另加两条：`CITATION.cff` 存在且声明格式版本，以及每篇下载了全文的文献都在 `quotes.md` 中有交代（登记引文或声明未引用其数值）。
+
+![图 16](figures/fig16_self_review_convergence.png)
+
+**图 16**：两个变更周期的 $|B_n|$ 曲线，均严格递减至 0，且均未超过协议规定的轮数上限 3。**C1 值得单独记一笔**：一个返回了「相似度 1.0」的模糊匹配，安静地给出了一篇完全不同的论文。如果著录信息是手写的，这个错误根本不会发生——但也不会有任何机制能发现另一种同样容易犯的手写错误。**自动化不消灭错误，它把错误从「随机且不可检」换成「系统且可检」**，前提是你真的去检。
+
+### 9.5 一处必须承认的不符合项
 
 本报告的评审者与作者是同一个主体，因此**不变量 3（reviewer 无轨迹）只做到了结构上的近似而非严格满足**。真实部署中该不变量由独立上下文的 subagent 保证；本报告只能通过「以 verifier 输出与落盘数据为唯一输入重新检查」来逼近它。**这是本报告方法论上最弱的一环，如实记录。**
 
@@ -1048,21 +1088,98 @@ exit 0
 | fig13 | EIR–ECR 迭代稳定域 | 闭式判据 |
 | fig14 | 旁路批准归因分解 | t10 |
 | fig15 | 成熟层的仓库级聚簇 | t11 |
-| fig16 | 本报告自审的 $\|B_n\|$ 曲线 | §9.2 |
+| fig16 | 两个变更周期的自审 $\|B_n\|$ 曲线 | `audit/self_review_log.csv` |
 
-## 附录 C：文献
+## 附录 C：引用本报告
 
-22 篇全文的 URL、字节数与 SHA-256 见 [`lit/manifest.csv`](lit/manifest.csv)，逐条引文原文见 [`lit/quotes.md`](lit/quotes.md)（含 §9 已撤销的 6 条引用）。全文本身不随本仓库分发。
+仓库根目录的 [`CITATION.cff`](CITATION.cff) 采用 Citation File Format 1.2.0。GitHub 会解析该文件并在仓库首页右侧渲染 "Cite this repository"，可直接导出 APA 与 BibTeX 两种格式[[29]](#ref-github-citation)。若需在本地转换为其他格式，可用 `cffconvert`。
 
-**AI agent 与 code review 实证**：AIDev 数据集（arXiv 2602.09185）· code review agent 的信噪比与合并率（2604.03196）· CodeRabbit 反馈挖掘（2607.03316）· 人类审查 agent 代码的习惯化（2606.22721）· agent PR 接受率的任务分层分析（2602.08915）· agentic PR 修复被拒原因（2606.13468）· reviewer bot 足迹（2604.24450）· agentic code review 展望（2605.17548）
+本报告的可引用单元是**基准日 + 提交哈希**，而非仓库本身：全部数值绑定在 2026-08-04 这一次采集上，重新运行 `scripts/collect.py` 会得到不同的数值。引用时请注明所依据的提交。
 
-**迭代与终止机制**：自我纠错的反馈控制框架与稳定性阈值（2604.22273）· LLM 尚不能自我纠错（2310.01798）· 迭代自精修中的奖励攻击（2407.04549）· 自偏好放大（2402.11436）· Self-Refine（2303.17651）· 无界 agent 循环（2607.01641）
+---
 
-**人类 code review 基线**：Google 的现代代码评审案例研究（sadowski2018）· 跨组织收敛（rigby2013）· 评审的期望与挑战（bacchelli2013）· 有用评审的特征（bosu2015）· 拉取式开发中的整合者视角（gousios2015）与贡献者视角（gousios2016）· 评审延迟的决定因素（yu2015）· 评审参与度（thongtanunam2016）
+## 附录 D：参考文献
 
-**工程惯例（2026-08-04 逐句复核）**：Google eng-practices（The Standard of Code Review）· Node.js Collaborator Guide · Kubernetes PR 流程 · Apache Voting Process · GitLab Code Review 开发文档 · rust-lang/rfcbot-rs
+正文中的引用写作可点击的 `[n]`，链接目标带有文献 key（如 `#ref-sadowski2018`），因此「编号 ↔ 文献」这一映射本身是机器可核对的，由 [`scripts/verify.py`](scripts/verify.py) 检查三件事：正文引用的每个编号与其锚点一致、不存在指向不存在文献的孤儿引用、不存在从未被正文引用的条目。第三方论文全文不随本仓库分发，只提供 URL 与 SHA-256。
 
-**Harness 官方文档（2026-08-04 复核）**：Claude Code — Code Review / GitHub Actions / Hooks · Codex — GitHub 集成与 code review 规则
+<!--REFS:BEGIN-->
+
+共 34 条：学术文献 22 条（全部下载全文核对，校验和见 [`lit/manifest.csv`](lit/manifest.csv)，逐条引文见 [`lit/quotes.md`](lit/quotes.md)），工程惯例与产品文档 12 条（全部于 2026-08-04 回原文逐句复核）。著录信息由 [`scripts/fetch_citation_metadata.py`](scripts/fetch_citation_metadata.py) 自 arXiv 与 DBLP 接口取回并落盘于 [`lit/references.json`](lit/references.json)，本表与 [`references.bib`](references.bib) 均由 [`scripts/gen_references.py`](scripts/gen_references.py) 生成，非手写。
+
+### D.1 学术文献
+
+<a id="ref-2606.13468"></a>**[1]** Mahmoud Abujadallah, Ali Arabat, Mohammed Sayagh. *Understanding the Rejection of Fixes Generated by Agentic Pull Requests -- Insights from the AIDev Dataset*. arXiv:2606.13468 [cs.SE]，2026-06-11. DOI: [10.1145/3793302.3793592](https://doi.org/10.1145/3793302.3793592). e-print 源码包 <https://arxiv.org/e-print/2606.13468>，SHA-256 `60c42d352a5d1480…`（取回于 2026-08-04）。
+
+<a id="ref-bacchelli2013"></a>**[2]** Alberto Bacchelli, Christian Bird. *Expectations, outcomes, and challenges of modern code review*. ICSE 2013. DOI: [10.1109/ICSE.2013.6606617](https://doi.org/10.1109/ICSE.2013.6606617). 全文 <https://sback.it/publications/icse2013.pdf>，SHA-256 `328720358c303075…`（取回于 2026-08-04）。
+
+<a id="ref-bosu2015"></a>**[3]** Amiangshu Bosu, Michaela Greiler, Christian Bird. *Characteristics of Useful Code Reviews: An Empirical Study at Microsoft*. MSR 2015. DOI: [10.1109/MSR.2015.21](https://doi.org/10.1109/MSR.2015.21). 全文 <https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/bosu2015useful.pdf>，SHA-256 `f8e2cb4e6ecdc4a2…`（取回于 2026-08-04）。
+
+<a id="ref-2604.03196"></a>**[4]** Kowshik Chowdhury, Dipayan Banik, K M Ferdous, Shazibul Islam Shamim. *From Industry Claims to Empirical Reality: An Empirical Study of Code Review Agents in Pull Requests*. arXiv:2604.03196 [cs.SE]，2026-04-03. e-print 源码包 <https://arxiv.org/e-print/2604.03196>，SHA-256 `371904d42df85024…`（取回于 2026-08-04）。
+
+<a id="ref-2604.24450"></a>**[5]** Syeda Kaneez Fatima, Yousuf Abrar, Abdul Rehman Tahir, Amelia Nawaz, Shamsa Abid, Abdul Ali Bangash. *On the Footprints of Reviewer Bots Feedback on Agentic Pull Requests in OSS GitHub Repositories*. arXiv:2604.24450 [cs.SE]，2026-04-27. DOI: [10.1145/3793302.3793599](https://doi.org/10.1145/3793302.3793599). e-print 源码包 <https://arxiv.org/e-print/2604.24450>，SHA-256 `8e78f47afefd8ed4…`（取回于 2026-08-04）。
+
+<a id="ref-gousios2015"></a>**[6]** Georgios Gousios, Andy Zaidman, Margaret-Anne D. Storey, Arie van Deursen. *Work Practices and Challenges in Pull-Based Development: The Integrator's Perspective*. ICSE 2015. DOI: [10.1109/ICSE.2015.55](https://doi.org/10.1109/ICSE.2015.55). 全文 <https://azaidman.github.io/publications/gousiosICSE2015.pdf>，SHA-256 `2a04fcae26d94002…`（取回于 2026-08-04）。
+
+<a id="ref-gousios2016"></a>**[7]** Georgios Gousios, Margaret-Anne D. Storey, Alberto Bacchelli. *Work practices and challenges in pull-based development: the contributor's perspective*. ICSE 2016. DOI: [10.1145/2884781.2884826](https://doi.org/10.1145/2884781.2884826). 全文 <https://sback.it/publications/icse2016b.pdf>，SHA-256 `c962df1e01f1296e…`（取回于 2026-08-04）。
+
+<a id="ref-2607.01641"></a>**[8]** Xinyi Hou, Shenao Wang, Yanjie Zhao, Haoyu Wang. *When Agents Do Not Stop: Uncovering Infinite Agentic Loops in LLM Agents*. arXiv:2607.01641 [cs.SE]，2026-07-02. e-print 源码包 <https://arxiv.org/e-print/2607.01641>，SHA-256 `bcc15efca29ac61e…`（取回于 2026-08-04）。
+
+<a id="ref-2310.01798"></a>**[9]** Jie Huang, Xinyun Chen, Swaroop Mishra, Huaixiu Steven Zheng, Adams Wei Yu, Xinying Song, 等. *Large Language Models Cannot Self-Correct Reasoning Yet*. arXiv:2310.01798 [cs.CL]，2023-10-03（最后修订 2024-03-14）. e-print 源码包 <https://arxiv.org/e-print/2310.01798>，SHA-256 `5ecc62e5807453d5…`（取回于 2026-08-04）。
+
+<a id="ref-2605.17548"></a>**[10]** Hüseyin Özgür Kamalı, Erdem Tuna, Vahid Haratian, Eray Tüzün. *Rethinking Code Review in the Age of AI: A Vision for Agentic Code Review*. arXiv:2605.17548 [cs.SE]，2026-05-17（最后修订 2026-06-05）. e-print 源码包 <https://arxiv.org/e-print/2605.17548>，SHA-256 `f4a6f6f9ddf807b9…`（取回于 2026-08-04）。
+
+<a id="ref-2602.09185"></a>**[11]** Hao Li, Haoxiang Zhang, Ahmed E. Hassan. *AIDev: Studying AI Coding Agents on GitHub*. arXiv:2602.09185 [cs.SE]，2026-02-09. DOI: [10.1145/3793302.3797249](https://doi.org/10.1145/3793302.3797249). e-print 源码包 <https://arxiv.org/e-print/2602.09185>，SHA-256 `c565e5ce56c7e143…`（取回于 2026-08-04）。
+
+<a id="ref-2607.03316"></a>**[12]** Hong Yi Lin, Mingzhao Liang, Patanamon Thongtanunam, Kla Tantithamthavorn. *Is Agentic Code Review Helpful? Mining Developers' Feedback to CodeRabbit Reviews in the Wild*. arXiv:2607.03316 [cs.SE]，2026-07-03（最后修订 2026-07-23）. e-print 源码包 <https://arxiv.org/e-print/2607.03316>，SHA-256 `91d81b5e9e229c73…`（取回于 2026-08-04）。
+
+<a id="ref-2604.22273"></a>**[13]** Aofan Liu, Jingxiang Meng. *Self-Correction as Feedback Control: Error Dynamics, Stability Thresholds, and Prompt Interventions in LLMs*. arXiv:2604.22273 [cs.AI]，2026-04-24（最后修订 2026-05-04）. e-print 源码包 <https://arxiv.org/e-print/2604.22273>，SHA-256 `312bfe4480e140f7…`（取回于 2026-08-04）。
+
+<a id="ref-2303.17651"></a>**[14]** Aman Madaan, Niket Tandon, Prakhar Gupta, Skyler Hallinan, Luyu Gao, Sarah Wiegreffe, 等. *Self-Refine: Iterative Refinement with Self-Feedback*. arXiv:2303.17651 [cs.CL]，2023-03-30（最后修订 2023-05-25）. e-print 源码包 <https://arxiv.org/e-print/2303.17651>，SHA-256 `b13ddd82b7c55224…`（取回于 2026-08-04）。
+
+<a id="ref-2407.04549"></a>**[15]** Jane Pan, He He, Samuel R. Bowman, Shi Feng. *Spontaneous Reward Hacking in Iterative Self-Refinement*. arXiv:2407.04549 [cs.CL]，2024-07-05. e-print 源码包 <https://arxiv.org/e-print/2407.04549>，SHA-256 `74ba5d18720bdfd7…`（取回于 2026-08-04）。
+
+<a id="ref-2602.08915"></a>**[16]** Giovanni Pinna, Jingzhi Gong, David Williams, Federica Sarro. *Comparing AI Coding Agents: A Task-Stratified Analysis of Pull Request Acceptance*. arXiv:2602.08915 [cs.SE]，2026-02-09（最后修订 2026-05-07）. e-print 源码包 <https://arxiv.org/e-print/2602.08915>，SHA-256 `82df4aac010c8142…`（取回于 2026-08-04）。
+
+<a id="ref-rigby2013"></a>**[17]** Peter C. Rigby, Christian Bird. *Convergent contemporary software peer review practices*. ESEC/FSE 2013. DOI: [10.1145/2491411.2491444](https://doi.org/10.1145/2491411.2491444). 全文 <https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/rigby2013convergent.pdf>，SHA-256 `68e2faff6ff924e2…`（取回于 2026-08-04）。
+
+<a id="ref-sadowski2018"></a>**[18]** Caitlin Sadowski, Emma Söderberg, Luke Church, Michal Sipko, Alberto Bacchelli. *Modern code review: a case study at google*. ICSE 2018. DOI: [10.1145/3183519.3183525](https://doi.org/10.1145/3183519.3183525). 全文 <https://sback.it/publications/icse2018seip.pdf>，SHA-256 `299c18e1da4dc75f…`（取回于 2026-08-04）。
+
+<a id="ref-thongtanunam2016"></a>**[19]** Patanamon Thongtanunam, Shane McIntosh, Ahmed E. Hassan, Hajimu Iida. *Review participation in modern code review - An empirical study of the android, Qt, and OpenStack projects*. Empirical Software Engineering 2017. DOI: [10.1007/S10664-016-9452-6](https://doi.org/10.1007/S10664-016-9452-6). 全文 <https://sailresearch.github.io/sail-website/data/pdfs/EMSE2016_ReviewParticipationInModernCodeReviewAnEmpiricalStudyOfTheAndroidQtAndOpenStackProjects.pdf>，SHA-256 `53706eae8ecdf994…`（取回于 2026-08-04）。
+
+<a id="ref-2402.11436"></a>**[20]** Wenda Xu, Guanglei Zhu, Xuandong Zhao, Liangming Pan, Lei Li, William Yang Wang. *Pride and Prejudice: LLM Amplifies Self-Bias in Self-Refinement*. arXiv:2402.11436 [cs.CL]，2024-02-18（最后修订 2024-06-18）. e-print 源码包 <https://arxiv.org/e-print/2402.11436>，SHA-256 `deae9fd16580e4af…`（取回于 2026-08-04）。
+
+<a id="ref-yu2015"></a>**[21]** Yue Yu, Huaimin Wang, Vladimir Filkov, Premkumar T. Devanbu, Bogdan Vasilescu. *Wait for It: Determinants of Pull Request Evaluation Latency on GitHub*. MSR 2015. DOI: [10.1109/MSR.2015.42](https://doi.org/10.1109/MSR.2015.42). 全文 <https://yuyue.github.io/res/paper/msr2015.pdf>，SHA-256 `0d2001b86af7663c…`（取回于 2026-08-04）。
+
+<a id="ref-2606.22721"></a>**[22]** Haoran Yu, Lifei Liu, Xiaochong Jiang, Yuwen Jia, Su Wang, Pin Qian, 等. *Habituation at the Gate: Rising Approval and Declining Scrutiny in Human Review of AI Agent Code*. arXiv:2606.22721 [cs.SE]，2026-06-21. e-print 源码包 <https://arxiv.org/e-print/2606.22721>，SHA-256 `74389dd168e404ca…`（取回于 2026-08-04）。
+
+
+### D.2 工程惯例与产品文档
+
+<a id="ref-apache-voting"></a>**[23]** The Apache Software Foundation. *Apache Voting Process*. apache.org. <https://www.apache.org/foundation/voting.html>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-cc-code-review"></a>**[24]** Anthropic. *Code Review*. Claude Code Documentation. <https://code.claude.com/docs/en/code-review>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-cc-github-actions"></a>**[25]** Anthropic. *Claude Code GitHub Actions*. Claude Code Documentation. <https://code.claude.com/docs/en/github-actions>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-cc-hooks"></a>**[26]** Anthropic. *Hooks Reference*. Claude Code Documentation. <https://code.claude.com/docs/en/hooks>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-codex-github"></a>**[27]** OpenAI. *Codex GitHub Integration*. OpenAI Codex Documentation. <https://learn.chatgpt.com/codex/third-party/github>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-codex-review-usecase"></a>**[28]** OpenAI. *GitHub Code Reviews*. OpenAI Codex Documentation. <https://learn.chatgpt.com/use-cases/github-code-reviews>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-github-citation"></a>**[29]** GitHub. *About CITATION files*. GitHub Docs. <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-gitlab-review"></a>**[30]** GitLab. *Code Review Guidelines*. GitLab Development Documentation. <https://docs.gitlab.com/development/code_review/>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-google-standard"></a>**[31]** Google. *The Standard of Code Review*. Google Engineering Practices. <https://google.github.io/eng-practices/review/reviewer/standard.html>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-k8s-pr"></a>**[32]** Kubernetes Project. *Pull Requests*. kubernetes.dev Contributor Guide. <https://www.kubernetes.dev/docs/guide/pull-requests/>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-nodejs-collaborator"></a>**[33]** Node.js Project. *Collaborator Guide*. nodejs/node. <https://github.com/nodejs/node/blob/main/doc/contributing/collaborator-guide.md>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<a id="ref-rfcbot"></a>**[34]** rust-lang. *rfcbot-rs*. GitHub. <https://github.com/rust-lang/rfcbot-rs>（访问日期 2026-08-04）。本报告所引措辞已于该日期回原文逐句复核。
+
+<!--REFS:END-->
 
 
 

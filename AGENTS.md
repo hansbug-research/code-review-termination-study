@@ -5,7 +5,8 @@
 提交前必须全绿：
 
 ```bash
-python3 scripts/analyze.py && python3 scripts/plot.py && python3 scripts/verify.py
+python3 scripts/analyze.py && python3 scripts/plot.py \
+  && python3 scripts/gen_references.py && python3 scripts/verify.py
 ```
 
 ## Code Review Rules
@@ -20,6 +21,14 @@ python3 scripts/analyze.py && python3 scripts/plot.py && python3 scripts/verify.
 
 - 修改了 `raw/` 下的任何文件。
   Safe path：`raw/` 是 API 原始响应，只增不改；数据有问题就新增采集脚本并在 `report.md` §3.3 记录原因。
+
+### 引用
+
+- 手写参考文献著录信息，或手改 `gen_references.py` 生成的编号。
+  Safe path：著录信息只能来自 `lit/references.json`（由 arXiv / DBLP 接口取回）；改动后重跑 `scripts/gen_references.py` 回填。
+
+- 正文引用只写编号而不带 key（如写成 `[18]` 而非 `[[18]](#ref-sadowski2018)`）。
+  Safe path：始终带 key，否则「编号 ↔ 文献」的映射无法被机器核对。
 
 ### 结论强度
 

@@ -1,0 +1,688 @@
+[
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2604.22273",
+  "authors": [
+   "Aofan Liu",
+   "Jingxiang Meng"
+  ],
+  "doi": "",
+  "key": "2604.22273",
+  "kind": "arxiv",
+  "manifest_title": "Self-Correction as Feedback Control: Error Dynamics, Stability Thresholds, and Prompt Interventions in LLMs",
+  "primary_category": "cs.AI",
+  "published": "2026-04-24",
+  "sha256": "312bfe4480e140f7a017ac21f9f9e4f3347987512a5bf1bf8c2b148565481cc4",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Self-Correction as Feedback Control: Error Dynamics, Stability Thresholds, and Prompt Interventions in LLMs",
+  "updated": "2026-05-04",
+  "url": "https://arxiv.org/e-print/2604.22273"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2604.03196",
+  "authors": [
+   "Kowshik Chowdhury",
+   "Dipayan Banik",
+   "K M Ferdous",
+   "Shazibul Islam Shamim"
+  ],
+  "doi": "",
+  "key": "2604.03196",
+  "kind": "arxiv",
+  "manifest_title": "From Industry Claims to Empirical Reality: An Empirical Study of Code Review Agents in Pull Requests",
+  "primary_category": "cs.SE",
+  "published": "2026-04-03",
+  "sha256": "371904d42df850247acd39f201c790c95e301bc383834b7e28680232337a8514",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "From Industry Claims to Empirical Reality: An Empirical Study of Code Review Agents in Pull Requests",
+  "updated": "2026-04-03",
+  "url": "https://arxiv.org/e-print/2604.03196"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2607.03316",
+  "authors": [
+   "Hong Yi Lin",
+   "Mingzhao Liang",
+   "Patanamon Thongtanunam",
+   "Kla Tantithamthavorn"
+  ],
+  "doi": "",
+  "key": "2607.03316",
+  "kind": "arxiv",
+  "manifest_title": "Is Agentic Code Review Helpful? Mining Developers' Feedback to CodeRabbit Reviews in the Wild",
+  "primary_category": "cs.SE",
+  "published": "2026-07-03",
+  "sha256": "91d81b5e9e229c7358ddd853f9bd27b369f340bcf7e1f8b72408bf9d81db2424",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Is Agentic Code Review Helpful? Mining Developers' Feedback to CodeRabbit Reviews in the Wild",
+  "updated": "2026-07-23",
+  "url": "https://arxiv.org/e-print/2607.03316"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2606.22721",
+  "authors": [
+   "Haoran Yu",
+   "Lifei Liu",
+   "Xiaochong Jiang",
+   "Yuwen Jia",
+   "Su Wang",
+   "Pin Qian",
+   "Yihang Chen"
+  ],
+  "doi": "",
+  "key": "2606.22721",
+  "kind": "arxiv",
+  "manifest_title": "Habituation at the Gate: Rising Approval and Declining Scrutiny in Human Review of AI Agent Code",
+  "primary_category": "cs.SE",
+  "published": "2026-06-21",
+  "sha256": "74389dd168e404ca7edf5b14363531c21848a16d2410d9d6eaae2c2eabddfd67",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Habituation at the Gate: Rising Approval and Declining Scrutiny in Human Review of AI Agent Code",
+  "updated": "2026-06-21",
+  "url": "https://arxiv.org/e-print/2606.22721"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2607.01641",
+  "authors": [
+   "Xinyi Hou",
+   "Shenao Wang",
+   "Yanjie Zhao",
+   "Haoyu Wang"
+  ],
+  "doi": "",
+  "key": "2607.01641",
+  "kind": "arxiv",
+  "manifest_title": "When Agents Do Not Stop: Uncovering Infinite Agentic Loops in LLM Agents",
+  "primary_category": "cs.SE",
+  "published": "2026-07-02",
+  "sha256": "bcc15efca29ac61e98ce34377dc047cf2b6d8d5e1d8850113915218ff79b7d01",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "When Agents Do Not Stop: Uncovering Infinite Agentic Loops in LLM Agents",
+  "updated": "2026-07-02",
+  "url": "https://arxiv.org/e-print/2607.01641"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2602.09185",
+  "authors": [
+   "Hao Li",
+   "Haoxiang Zhang",
+   "Ahmed E. Hassan"
+  ],
+  "doi": "10.1145/3793302.3797249",
+  "key": "2602.09185",
+  "kind": "arxiv",
+  "manifest_title": "AIDev: Studying AI Coding Agents on GitHub",
+  "primary_category": "cs.SE",
+  "published": "2026-02-09",
+  "sha256": "c565e5ce56c7e1433d5a38bcad0f5970f449d52dcf29e315c4080e05916cc0d5",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "AIDev: Studying AI Coding Agents on GitHub",
+  "updated": "2026-02-09",
+  "url": "https://arxiv.org/e-print/2602.09185"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2602.08915",
+  "authors": [
+   "Giovanni Pinna",
+   "Jingzhi Gong",
+   "David Williams",
+   "Federica Sarro"
+  ],
+  "doi": "",
+  "key": "2602.08915",
+  "kind": "arxiv",
+  "manifest_title": "Comparing AI Coding Agents: A Task-Stratified Analysis of Pull Request Acceptance",
+  "primary_category": "cs.SE",
+  "published": "2026-02-09",
+  "sha256": "82df4aac010c8142dc1b1aceb4be72df4b9df39c3659f8471437e7c01df286b4",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Comparing AI Coding Agents: A Task-Stratified Analysis of Pull Request Acceptance",
+  "updated": "2026-05-07",
+  "url": "https://arxiv.org/e-print/2602.08915"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2606.13468",
+  "authors": [
+   "Mahmoud Abujadallah",
+   "Ali Arabat",
+   "Mohammed Sayagh"
+  ],
+  "doi": "10.1145/3793302.3793592",
+  "key": "2606.13468",
+  "kind": "arxiv",
+  "manifest_title": "Understanding the Rejection of Fixes Generated by Agentic Pull Requests",
+  "primary_category": "cs.SE",
+  "published": "2026-06-11",
+  "sha256": "60c42d352a5d148024b894605c2017d526c5f7d703867f8a3a0061dcd39d96e6",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Understanding the Rejection of Fixes Generated by Agentic Pull Requests -- Insights from the AIDev Dataset",
+  "updated": "2026-06-11",
+  "url": "https://arxiv.org/e-print/2606.13468"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2604.24450",
+  "authors": [
+   "Syeda Kaneez Fatima",
+   "Yousuf Abrar",
+   "Abdul Rehman Tahir",
+   "Amelia Nawaz",
+   "Shamsa Abid",
+   "Abdul Ali Bangash"
+  ],
+  "doi": "10.1145/3793302.3793599",
+  "key": "2604.24450",
+  "kind": "arxiv",
+  "manifest_title": "On the Footprints of Reviewer Bots Feedback on Agentic Pull Requests in OSS GitHub Repositories",
+  "primary_category": "cs.SE",
+  "published": "2026-04-27",
+  "sha256": "8e78f47afefd8ed44af7bf31aaffbfb6d2ff00abe5df08e7d3c07ad386495fba",
+  "source_api": "arxiv",
+  "tier": 2,
+  "title": "On the Footprints of Reviewer Bots Feedback on Agentic Pull Requests in OSS GitHub Repositories",
+  "updated": "2026-04-27",
+  "url": "https://arxiv.org/e-print/2604.24450"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2605.17548",
+  "authors": [
+   "Hüseyin Özgür Kamalı",
+   "Erdem Tuna",
+   "Vahid Haratian",
+   "Eray Tüzün"
+  ],
+  "doi": "",
+  "key": "2605.17548",
+  "kind": "arxiv",
+  "manifest_title": "Rethinking Code Review in the Age of AI: A Vision for Agentic Code Review",
+  "primary_category": "cs.SE",
+  "published": "2026-05-17",
+  "sha256": "f4a6f6f9ddf807b963a5a7d00519a4ef62165e20c0a63299a4b71f707b14318d",
+  "source_api": "arxiv",
+  "tier": 2,
+  "title": "Rethinking Code Review in the Age of AI: A Vision for Agentic Code Review",
+  "updated": "2026-06-05",
+  "url": "https://arxiv.org/e-print/2605.17548"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2310.01798",
+  "authors": [
+   "Jie Huang",
+   "Xinyun Chen",
+   "Swaroop Mishra",
+   "Huaixiu Steven Zheng",
+   "Adams Wei Yu",
+   "Xinying Song",
+   "Denny Zhou"
+  ],
+  "doi": "",
+  "key": "2310.01798",
+  "kind": "arxiv",
+  "manifest_title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+  "primary_category": "cs.CL",
+  "published": "2023-10-03",
+  "sha256": "5ecc62e5807453d543ba7d2d831079fdfb1497d532c5e216be8026bcd70aeaf9",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+  "updated": "2024-03-14",
+  "url": "https://arxiv.org/e-print/2310.01798"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2407.04549",
+  "authors": [
+   "Jane Pan",
+   "He He",
+   "Samuel R. Bowman",
+   "Shi Feng"
+  ],
+  "doi": "",
+  "key": "2407.04549",
+  "kind": "arxiv",
+  "manifest_title": "Spontaneous Reward Hacking in Iterative Self-Refinement",
+  "primary_category": "cs.CL",
+  "published": "2024-07-05",
+  "sha256": "74ba5d18720bdfd7c6b7745e8b295891a4ac36a0b165fb4061412a4983ae5caa",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Spontaneous Reward Hacking in Iterative Self-Refinement",
+  "updated": "2024-07-05",
+  "url": "https://arxiv.org/e-print/2407.04549"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2402.11436",
+  "authors": [
+   "Wenda Xu",
+   "Guanglei Zhu",
+   "Xuandong Zhao",
+   "Liangming Pan",
+   "Lei Li",
+   "William Yang Wang"
+  ],
+  "doi": "",
+  "key": "2402.11436",
+  "kind": "arxiv",
+  "manifest_title": "Pride and Prejudice: LLM Amplifies Self-Bias in Self-Refinement",
+  "primary_category": "cs.CL",
+  "published": "2024-02-18",
+  "sha256": "deae9fd16580e4af5200e42c61c184c08e5abc7d58b3fb8a3f666d562b297eb1",
+  "source_api": "arxiv",
+  "tier": 2,
+  "title": "Pride and Prejudice: LLM Amplifies Self-Bias in Self-Refinement",
+  "updated": "2024-06-18",
+  "url": "https://arxiv.org/e-print/2402.11436"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2303.17651",
+  "authors": [
+   "Aman Madaan",
+   "Niket Tandon",
+   "Prakhar Gupta",
+   "Skyler Hallinan",
+   "Luyu Gao",
+   "Sarah Wiegreffe",
+   "Uri Alon",
+   "Nouha Dziri",
+   "Shrimai Prabhumoye",
+   "Yiming Yang",
+   "Shashank Gupta",
+   "Bodhisattwa Prasad Majumder",
+   "Katherine Hermann",
+   "Sean Welleck",
+   "Amir Yazdanbakhsh",
+   "Peter Clark"
+  ],
+  "doi": "",
+  "key": "2303.17651",
+  "kind": "arxiv",
+  "manifest_title": "Self-Refine: Iterative Refinement with Self-Feedback",
+  "primary_category": "cs.CL",
+  "published": "2023-03-30",
+  "sha256": "b13ddd82b7c5522406a2ab72d0f6ae9f2eacade05ec9eabf7e77021c20b04d50",
+  "source_api": "arxiv",
+  "tier": 2,
+  "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+  "updated": "2023-05-25",
+  "url": "https://arxiv.org/e-print/2303.17651"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Caitlin Sadowski",
+   "Emma Söderberg",
+   "Luke Church",
+   "Michal Sipko",
+   "Alberto Bacchelli"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/icse/SadowskiSCSB18",
+  "doi": "10.1145/3183519.3183525",
+  "key": "sadowski2018",
+  "kind": "pdf",
+  "manifest_title": "Modern Code Review: A Case Study at Google",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "299c18e1da4dc75f43327fcf7c9f51232f400aab6873bafb28a6ddf623133eec",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "Modern code review: a case study at google",
+  "url": "https://sback.it/publications/icse2018seip.pdf",
+  "venue": "ICSE",
+  "year": "2018"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Peter C. Rigby",
+   "Christian Bird"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/sigsoft/RigbyB13",
+  "doi": "10.1145/2491411.2491444",
+  "key": "rigby2013",
+  "kind": "pdf",
+  "manifest_title": "Convergent Contemporary Software Peer Review Practices",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "68e2faff6ff924e21f112ab98d8909c865697980d38ebaf11dfdcb7e9662c0f0",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "Convergent contemporary software peer review practices",
+  "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/rigby2013convergent.pdf",
+  "venue": "ESEC/SIGSOFT FSE",
+  "year": "2013"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Alberto Bacchelli",
+   "Christian Bird"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/icse/BacchelliB13",
+  "doi": "10.1109/ICSE.2013.6606617",
+  "key": "bacchelli2013",
+  "kind": "pdf",
+  "manifest_title": "Expectations, Outcomes, and Challenges of Modern Code Review",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "328720358c303075b6550363712615e89be9d6843f4d6c0cd3316fa66de20a6d",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "Expectations, outcomes, and challenges of modern code review",
+  "url": "https://sback.it/publications/icse2013.pdf",
+  "venue": "ICSE",
+  "year": "2013"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Amiangshu Bosu",
+   "Michaela Greiler",
+   "Christian Bird"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/msr/BosuGB15",
+  "doi": "10.1109/MSR.2015.21",
+  "key": "bosu2015",
+  "kind": "pdf",
+  "manifest_title": "Characteristics of Useful Code Reviews: An Empirical Study at Microsoft",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "f8e2cb4e6ecdc4a2c325674b2129b068e0136c5e89a83b091c0455ac4a7fb8a4",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "Characteristics of Useful Code Reviews: An Empirical Study at Microsoft",
+  "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/bosu2015useful.pdf",
+  "venue": "MSR",
+  "year": "2015"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Georgios Gousios",
+   "Andy Zaidman",
+   "Margaret-Anne D. Storey",
+   "Arie van Deursen"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/icse/GousiosZSD15",
+  "doi": "10.1109/ICSE.2015.55",
+  "key": "gousios2015",
+  "kind": "pdf",
+  "manifest_title": "Work Practices and Challenges in Pull-Based Development: The Integrator's Perspective",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "2a04fcae26d940020179013a50a1bb096993c2debd85be85a363247176839657",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "Work Practices and Challenges in Pull-Based Development: The Integrator's Perspective",
+  "url": "https://azaidman.github.io/publications/gousiosICSE2015.pdf",
+  "venue": "ICSE",
+  "year": "2015"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Georgios Gousios",
+   "Margaret-Anne D. Storey",
+   "Alberto Bacchelli"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/icse/GousiosSB16",
+  "doi": "10.1145/2884781.2884826",
+  "key": "gousios2016",
+  "kind": "pdf",
+  "manifest_title": "Work Practices and Challenges in Pull-Based Development: The Contributor's Perspective",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "c962df1e01f1296e150b8998c48ed530b69ac794285f1084ebf1ee8b2bdb2733",
+  "source_api": "dblp",
+  "tier": 2,
+  "title": "Work practices and challenges in pull-based development: the contributor's perspective",
+  "url": "https://sback.it/publications/icse2016b.pdf",
+  "venue": "ICSE",
+  "year": "2016"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Yue Yu 0001",
+   "Huaimin Wang 0001",
+   "Vladimir Filkov",
+   "Premkumar T. Devanbu",
+   "Bogdan Vasilescu"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/msr/YuWFDV15",
+  "doi": "10.1109/MSR.2015.42",
+  "key": "yu2015",
+  "kind": "pdf",
+  "manifest_title": "Wait For It: Determinants of Pull Request Evaluation Latency on GitHub",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "0d2001b86af7663cb78668b339f6c8ae6ddc44635bb9060e0bced11d93ee9876",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "Wait for It: Determinants of Pull Request Evaluation Latency on GitHub",
+  "url": "https://yuyue.github.io/res/paper/msr2015.pdf",
+  "venue": "MSR",
+  "year": "2015"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Patanamon Thongtanunam",
+   "Shane McIntosh",
+   "Ahmed E. Hassan",
+   "Hajimu Iida"
+  ],
+  "dblp_url": "https://dblp.org/rec/journals/ese/ThongtanunamMHI17",
+  "doi": "10.1007/S10664-016-9452-6",
+  "key": "thongtanunam2016",
+  "kind": "pdf",
+  "manifest_title": "Review Participation in Modern Code Review",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "53706eae8ecdf994490ca1dd7dab27ba08f0d7f87bb29fea714eb2693da749bc",
+  "source_api": "dblp",
+  "tier": 2,
+  "title": "Review participation in modern code review - An empirical study of the android, Qt, and OpenStack projects",
+  "url": "https://sailresearch.github.io/sail-website/data/pdfs/EMSE2016_ReviewParticipationInModernCodeReviewAnEmpiricalStudyOfTheAndroidQtAndOpenStackProjects.pdf",
+  "venue": "Empir. Softw. Eng.",
+  "year": "2017"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Google",
+  "authors": [
+   "Google"
+  ],
+  "container": "Google Engineering Practices",
+  "key": "google-standard",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "The Standard of Code Review",
+  "url": "https://google.github.io/eng-practices/review/reviewer/standard.html",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Node.js Project",
+  "authors": [
+   "Node.js Project"
+  ],
+  "container": "nodejs/node",
+  "key": "nodejs-collaborator",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Collaborator Guide",
+  "url": "https://github.com/nodejs/node/blob/main/doc/contributing/collaborator-guide.md",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Kubernetes Project",
+  "authors": [
+   "Kubernetes Project"
+  ],
+  "container": "kubernetes.dev Contributor Guide",
+  "key": "k8s-pr",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Pull Requests",
+  "url": "https://www.kubernetes.dev/docs/guide/pull-requests/",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "The Apache Software Foundation",
+  "authors": [
+   "The Apache Software Foundation"
+  ],
+  "container": "apache.org",
+  "key": "apache-voting",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Apache Voting Process",
+  "url": "https://www.apache.org/foundation/voting.html",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "GitLab",
+  "authors": [
+   "GitLab"
+  ],
+  "container": "GitLab Development Documentation",
+  "key": "gitlab-review",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Code Review Guidelines",
+  "url": "https://docs.gitlab.com/development/code_review/",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "rust-lang",
+  "authors": [
+   "rust-lang"
+  ],
+  "container": "GitHub",
+  "key": "rfcbot",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "rfcbot-rs",
+  "url": "https://github.com/rust-lang/rfcbot-rs",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Anthropic",
+  "authors": [
+   "Anthropic"
+  ],
+  "container": "Claude Code Documentation",
+  "key": "cc-code-review",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Code Review",
+  "url": "https://code.claude.com/docs/en/code-review",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Anthropic",
+  "authors": [
+   "Anthropic"
+  ],
+  "container": "Claude Code Documentation",
+  "key": "cc-github-actions",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Claude Code GitHub Actions",
+  "url": "https://code.claude.com/docs/en/github-actions",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Anthropic",
+  "authors": [
+   "Anthropic"
+  ],
+  "container": "Claude Code Documentation",
+  "key": "cc-hooks",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Hooks Reference",
+  "url": "https://code.claude.com/docs/en/hooks",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "OpenAI",
+  "authors": [
+   "OpenAI"
+  ],
+  "container": "OpenAI Codex Documentation",
+  "key": "codex-github",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Codex GitHub Integration",
+  "url": "https://learn.chatgpt.com/codex/third-party/github",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "OpenAI",
+  "authors": [
+   "OpenAI"
+  ],
+  "container": "OpenAI Codex Documentation",
+  "key": "codex-review-usecase",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "GitHub Code Reviews",
+  "url": "https://learn.chatgpt.com/use-cases/github-code-reviews",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "GitHub",
+  "authors": [
+   "GitHub"
+  ],
+  "container": "GitHub Docs",
+  "key": "github-citation",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "About CITATION files",
+  "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files",
+  "year": "2026"
+ }
+]

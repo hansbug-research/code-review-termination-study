@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: >-
+  PR 评审循环的有穷性：人类工程惯例的机制解剖，与成品 agent
+  harness 内的可执行协议
+message: >-
+  若在研究或工程实践中使用了本仓库的数据、图表或结论，请按此处的信息引用。
+  本仓库的全部数值绑定在 2026-08-04 这一次采集上，引用时请一并注明所依据的提交哈希。
+type: dataset
+authors:
+  - alias: HansBug
+    email: hansbug@buaa.edu.cn
+repository-code: >-
+  https://github.com/hansbug-research/code-review-termination-study
+abstract: >-
+  对 pull request 评审循环为何会终止的实证研究。以 2026-08-04 为基准日，采集 2,997
+  个不同 PR 的一手数据（5 个成熟仓库的已合并与关闭未合并 PR、4 个 coding agent 的
+  agentic PR、两个案例 PR 的完整事件流），全文核对 22 篇文献并撤销其中 6 条无法定位
+  的引用，归纳出人类工程惯例中的四类终止装置（语义降级、时钟、仲裁、移出本 PR），
+  并给出一套不自建 agent 框架、仅使用成品 harness 既有能力的可执行协议。全部数值可
+  由落盘原始数据离线重算，并由 177 条机器断言逐条核对。
+keywords:
+  - code review
+  - pull request
+  - software engineering
+  - empirical study
+  - LLM agents
+  - reproducible research
+license: MIT
+version: '1.0.0'
+date-released: '2026-08-04'

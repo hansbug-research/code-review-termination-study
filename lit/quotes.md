@@ -238,3 +238,19 @@
 ### 9.6 EIR/ECR 的逐模型数值
 
 早期草稿曾写「Opus 4.6 EIR 0.2%、ECR 25.0%；o3-mini ECR 44.1%」。本次核对只在摘要与定义处定位到 **EIR 阈值 $\lesssim 0.5\%$** 与**逐模型净收益**（o3-mini +3.4 pp、Claude Opus 4.6 +0.6 pp、o4-mini ±0 pp，GPT-5 及另四个模型退化），未定位到上述逐模型 EIR/ECR 点值。正文改用已核对的阈值与净收益。
+
+---
+
+## 10. 已取全文但正文未引用其数值的文献
+
+以下文献同在 [`manifest.csv`](manifest.csv) 的下载清单内，本报告在正文中**只以上下文方式引用其问题设定或定性归纳，不引用任何来自它们的数值**。按 §3.5 的核对协议，未登记逐字引文即不得使用数值，因此在此显式声明，以免读者误以为正文某个数字来自它们。
+
+| key | 标题 | 正文引用位置与用途 |
+|---|---|---|
+| `2604.24450` | On the Footprints of Reviewer Bots Feedback on Agentic Pull Requests in OSS GitHub Repositories | §7.3，仅用于说明同期存在针对 reviewer bot 痕迹的专门研究；其证据窗口同属 2025 年中快照 |
+| `2605.17548` | Rethinking Code Review in the Age of AI: A Vision for Agentic Code Review | §8 开篇，仅用于界定本报告与「愿景层面讨论」的分工 |
+| `2303.17651` | Self-Refine: Iterative Refinement with Self-Feedback | §4.2 时效性审计表，仅作为「增益集中在前 1–2 轮」这一结构型结论所属方法族的代表 |
+| `gousios2016` | Work practices and challenges in pull-based development: the contributor's perspective | §5.5，与 `gousios2015` 配对引用，说明该问题存在整合者与贡献者两侧视角 |
+| `thongtanunam2016` | Review participation in modern code review — An empirical study of the Android, Qt, and OpenStack projects | §5.5，仅说明「评审参与度」本身是既有研究对象，未与其数值比对 |
+
+**一处著录更正**：`thongtanunam2016` 这个 key 沿用自下载时的命名，但据 DBLP 著录，该文正式发表于 *Empirical Software Engineering* **2017** 年（DOI 10.1007/S10664-016-9452-6），2016 为在线首发年份。参考文献表中以 DBLP 的著录年份为准，key 保持不变以维持与 `manifest.csv` 的对应关系。

@@ -6,12 +6,14 @@
 
 1. **正文里的每个数字都必须来自 `derived/stats.json`。** 不许在 Markdown 里手写一个统计量。需要新数字就在 `scripts/analyze.py` 里算出来、落进 `stats.json`、在 `scripts/verify.py` 里加一条断言，然后才能写进正文。
 2. **`raw/` 只写不改。** 那里是 GraphQL 的原始响应，任何编辑都会让整条证据链失效。数据有问题就新增一个采集脚本并记录原因，不要修补旧文件。
-3. **文献数值必须先在 `lit/quotes.md` 登记逐字原文。** 定位不到的一律撤销并写进该文件 §9，而不是悄悄删掉。
+3. **文献数值必须先在 `lit/quotes.md` 登记逐字原文。** 定位不到的一律撤销并写进该文件 §9，而不是悄悄删掉。取了全文却未引用其数值的，写进 §10 声明清楚。
+4. **参考文献不许手写。** 著录信息由 `scripts/fetch_citation_metadata.py` 自 arXiv 与 DBLP 取回，落盘于 `lit/references.json`；文献表与 `references.bib` 由 `scripts/gen_references.py` 生成并回填 `report.md`。要加一篇文献，先加进 `lit/manifest.csv`、重跑取数、重跑生成，然后才能在正文引用。
 
 ## 提交前必须全绿
 
 ```bash
-python3 scripts/analyze.py && python3 scripts/plot.py && python3 scripts/verify.py
+python3 scripts/analyze.py && python3 scripts/plot.py \
+  && python3 scripts/gen_references.py && python3 scripts/verify.py
 ```
 
 `verify.py` 非 0 退出即不得提交。它同时核对断言总数自洽——正文声明的条数必须等于实际执行的条数，所以新增断言时记得同步更新 `report.md` 与 `README.md` 抬头的数字。
@@ -29,6 +31,10 @@ python3 scripts/analyze.py && python3 scripts/plot.py && python3 scripts/verify.
 `scripts/plot.py` 里的设计令牌与配色槽位不要临时改动：调色板已由校验器在「相邻对」与「全对」两种配对表下通过全部硬门槛，产物在 `audit/palette_validation.md`。分类色按固定槽位顺序取用、从不循环生成；顺序量用单色由浅到深；**绝不使用双 y 轴**（两个量纲就出小多图）。图表标题写结论，不写「XX 分布图」。
 
 新增图后记得在 `report.md` 附录 B 登记，否则 `verify.py` 的「图被引用」断言会失败。
+
+## 引用
+
+正文引用写作 `[[18]](#ref-sadowski2018)`，渲染为可点击的 `[18]`。链接目标里必须带 key —— 这不是装饰，它让「编号 ↔ 文献」的映射可被 `verify.py` 核对（编号一致、无孤儿引用、无未被引用的条目）。编号由 `gen_references.py` 按确定性排序分配，不要手改。
 
 ## 评审
 
