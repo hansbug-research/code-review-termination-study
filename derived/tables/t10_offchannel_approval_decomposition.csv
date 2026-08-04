@@ -1,0 +1,6 @@
+repo,n,n_zero_formal_review,pct_zero_formal_review,n_offchannel_approved,n_unattributed,pct_unattributed,n_zero_review_and_comment,pct_zero_review_and_comment
+kubernetes/kubernetes,100,57,57.0,57,0,0.0,0,0.0
+rust-lang/rust,100,30,30.0,30,0,0.0,0,0.0
+nodejs/node,100,0,0.0,0,0,0.0,0,0.0
+pytorch/pytorch,100,2,2.0,0,2,2.0,0,0.0
+python/cpython,100,54,54.0,33,21,21.0,21,21.0

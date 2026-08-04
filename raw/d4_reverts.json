@@ -1,0 +1,1 @@
+{"kubernetes/kubernetes": {"merged_total": 1971, "revert_titled": 18, "since": "2026-02-01"}, "rust-lang/rust": {"merged_total": 4303, "revert_titled": 46, "since": "2026-02-01"}, "nodejs/node": {"merged_total": 1358, "revert_titled": 6, "since": "2026-02-01"}, "python/cpython": {"merged_total": 5573, "revert_titled": 31, "since": "2026-02-01"}}

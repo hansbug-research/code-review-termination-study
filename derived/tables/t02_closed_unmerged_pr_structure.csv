@@ -1,0 +1,6 @@
+repo,n,median_days_open,p90_days_open,max_days_open,pct_closed_within_1day,pct_never_reviewed,pct_ge1_changes_requested,n_stale_or_lifecycle_labeled,pct_stale_or_lifecycle_labeled
+kubernetes/kubernetes,100,132.7,342.0,1086.4,11.0,50.0,11.0,60,60.0
+rust-lang/rust,100,0.2,191.6,897.8,68.0,81.0,2.0,0,0.0
+pytorch/pytorch,100,13.8,94.5,329.8,19.0,28.0,6.0,20,20.0
+python/cpython,100,0.6,714.6,2371.1,55.0,65.0,8.0,11,11.0
+nodejs/node,100,11.0,1145.4,2847.6,26.0,32.0,11.0,21,21.0

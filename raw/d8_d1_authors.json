@@ -1,0 +1,2512 @@
+{
+ "kubernetes/kubernetes": {
+  "141131": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141062": {
+   "author": "gnufied",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "139258": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141082": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141066": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141001": {
+   "author": "alancaldelas",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "137050": {
+   "author": "atiratree",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141075": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141048": {
+   "author": "BenTheElder",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141063": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "139642": {
+   "author": "akhilsingh-git",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "139751": {
+   "author": "akhilsingh-git",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "139752": {
+   "author": "akhilsingh-git",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "139457": {
+   "author": "akhilsingh-git",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "140982": {
+   "author": "soltysh",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "139236": {
+   "author": "rahulbabu95",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "139235": {
+   "author": "rahulbabu95",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "139234": {
+   "author": "rahulbabu95",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "139233": {
+   "author": "rahulbabu95",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "138736": {
+   "author": "rahulbabu95",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "141049": {
+   "author": "dgrisonnet",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "140931": {
+   "author": "pohly",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "138075": {
+   "author": "xigang",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "140289": {
+   "author": "romanbaron",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "139596": {
+   "author": "jdzikowski",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "140291": {
+   "author": "jpbetz",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "141042": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141034": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "141012": {
+   "author": "liggitt",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "138871": {
+   "author": "BenTheElder",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "140882": {
+   "author": "karlkfi",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "137660": {
+   "author": "pacoxu",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "140917": {
+   "author": "zylxjtu",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "140966": {
+   "author": "alancaldelas",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "140921": {
+   "author": "zylxjtu",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "75523": {
+   "author": "freehan",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "68592": {
+   "author": "jingax10",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "65492": {
+   "author": "agau4779",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "65330": {
+   "author": "freehan",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "65120": {
+   "author": "freehan",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "65022": {
+   "author": "jingax10",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64793": {
+   "author": "MrHohn",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64535": {
+   "author": "agau4779",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "60166": {
+   "author": "rramkumar1",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "57331": {
+   "author": "aleksandra-malinowska",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "55954": {
+   "author": "aleksandra-malinowska",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "51067": {
+   "author": "freehan",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "46527": {
+   "author": "perotinus",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "46260": {
+   "author": "perotinus",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "42538": {
+   "author": "adohe-zz",
+   "author_type": "User",
+   "author_association": "NONE"
+  },
+  "40017": {
+   "author": "crassirostris",
+   "author_type": "User",
+   "author_association": "NONE"
+  },
+  "40012": {
+   "author": "crassirostris",
+   "author_type": "User",
+   "author_association": "NONE"
+  },
+  "39949": {
+   "author": "crassirostris",
+   "author_type": "User",
+   "author_association": "NONE"
+  },
+  "39867": {
+   "author": "crassirostris",
+   "author_type": "User",
+   "author_association": "NONE"
+  },
+  "35945": {
+   "author": "jianhuiz",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "35943": {
+   "author": "jianhuiz",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "34574": {
+   "author": "Random-Liu",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "34471": {
+   "author": "timothysc",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "34470": {
+   "author": "mwielgus",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "33866": {
+   "author": "sjenning",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "33155": {
+   "author": "guangxuli",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "32581": {
+   "author": "justinsb",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "32325": {
+   "author": "jianhuiz",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "32127": {
+   "author": "pmorie",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "29892": {
+   "author": "david-mcmahon",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "29802": {
+   "author": "jessfraz",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "29788": {
+   "author": "xiangpengzhao",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "29008": {
+   "author": "justinsb",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "28777": {
+   "author": "jsafrane",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "28668": {
+   "author": "justinsb",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "28558": {
+   "author": null,
+   "author_type": null,
+   "author_association": "NONE"
+  },
+  "28556": {
+   "author": "madhusudancs",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "28388": {
+   "author": "mml",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "28372": {
+   "author": null,
+   "author_type": null,
+   "author_association": "NONE"
+  },
+  "28308": {
+   "author": null,
+   "author_type": null,
+   "author_association": "NONE"
+  },
+  "28182": {
+   "author": null,
+   "author_type": null,
+   "author_association": "NONE"
+  },
+  "28134": {
+   "author": "mml",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "28062": {
+   "author": "colhom",
+   "author_type": "User",
+   "author_association": "NONE"
+  },
+  "28025": {
+   "author": "ncdc",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "27539": {
+   "author": "gmarek",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "27482": {
+   "author": null,
+   "author_type": null,
+   "author_association": "NONE"
+  },
+  "27122": {
+   "author": "lukaszo",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "26755": {
+   "author": "david-mcmahon",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "26729": {
+   "author": null,
+   "author_type": null,
+   "author_association": "NONE"
+  },
+  "26470": {
+   "author": "timstclair",
+   "author_type": "User",
+   "author_association": "NONE"
+  },
+  "26446": {
+   "author": "mbruzek",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "26315": {
+   "author": "dims",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "26012": {
+   "author": "sitepodmatt",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "23045": {
+   "author": "justinsb",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "22426": {
+   "author": "mwielgus",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "22280": {
+   "author": "justinsb",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "21781": {
+   "author": "ncdc",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "21737": {
+   "author": "zreigz",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "21617": {
+   "author": "luxas",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "20439": {
+   "author": "gtank",
+   "author_type": "User",
+   "author_association": "NONE"
+  },
+  "19343": {
+   "author": "0xmichalis",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "19313": {
+   "author": null,
+   "author_type": null,
+   "author_association": "NONE"
+  },
+  "140990": {
+   "author": "xigang",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "140892": {
+   "author": "weizhoublue",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "140916": {
+   "author": "luxas",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  }
+ },
+ "rust-lang/rust": {
+  "160468": {
+   "author": "GuillaumeGomez",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160313": {
+   "author": "Vastargazing",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "157776": {
+   "author": "sgasho",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160311": {
+   "author": "jhpratt",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160310": {
+   "author": "jhpratt",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160414": {
+   "author": "jhpratt",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "158693": {
+   "author": "Sa4dUs",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160318": {
+   "author": "Zalathar",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159844": {
+   "author": "GuillaumeGomez",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160057": {
+   "author": "clubby789",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160358": {
+   "author": "joshtriplett",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "144220": {
+   "author": "Gelbpunkt",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155452": {
+   "author": "makai410",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159656": {
+   "author": "folkertdev",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159840": {
+   "author": "Gri-ffin",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160193": {
+   "author": "nnethercote",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "158823": {
+   "author": "Kobzol",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159836": {
+   "author": "adwinwhite",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159220": {
+   "author": "qaijuang",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160003": {
+   "author": "JonathanBrouwer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "106643": {
+   "author": "WaffleLapkin",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "158168": {
+   "author": "asder8215",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160306": {
+   "author": "saethlin",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160380": {
+   "author": "JonathanBrouwer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160254": {
+   "author": "adwinwhite",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160397": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160375": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159729": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160191": {
+   "author": "Zalathar",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160411": {
+   "author": "Zalathar",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160410": {
+   "author": "renovate-bot",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160409": {
+   "author": "sethryanrollins",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160386": {
+   "author": "petrochenkov",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160143": {
+   "author": "ywxt",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "156527": {
+   "author": "bushrat011899",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160189": {
+   "author": "cjgillot",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159195": {
+   "author": "cjgillot",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160400": {
+   "author": "JonathanBrouwer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159756": {
+   "author": "Zalathar",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160385": {
+   "author": "marcoieni",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160388": {
+   "author": "JonathanBrouwer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "114649": {
+   "author": "Kobzol",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "148190": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160342": {
+   "author": "a1phyr",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159906": {
+   "author": "CoCo-Japan-pan",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159881": {
+   "author": "zalanlevai",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159525": {
+   "author": "folkertdev",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160356": {
+   "author": "joshtriplett",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159499": {
+   "author": "AayushMainali-Github",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160323": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160012": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "157572": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160079": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159503": {
+   "author": "RalfJung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160339": {
+   "author": "JonathanBrouwer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160312": {
+   "author": "Randl",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "157104": {
+   "author": "nnethercote",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "158865": {
+   "author": "obi1kenobi",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159056": {
+   "author": "Kobzol",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159113": {
+   "author": "jhpratt",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "158942": {
+   "author": "nnethercote",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159857": {
+   "author": "weihanglo",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "157869": {
+   "author": "arjunr2",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160333": {
+   "author": "blyxyas",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160348": {
+   "author": "JonathanBrouwer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160325": {
+   "author": "Zalathar",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160250": {
+   "author": "joshtriplett",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160281": {
+   "author": "PaulDance",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160124": {
+   "author": "scottmcm",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160334": {
+   "author": "chenyukang",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160271": {
+   "author": "LorrensP-2158466",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160262": {
+   "author": "renovate-bot",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160025": {
+   "author": "asder8215",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "158814": {
+   "author": "tahadostifam",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "158548": {
+   "author": "bushrat011899",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160328": {
+   "author": "rperier",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160294": {
+   "author": "ZuseZ4",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160251": {
+   "author": "ArhanChaudhary",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160179": {
+   "author": "alexcrichton",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159700": {
+   "author": "joshtriplett",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160245": {
+   "author": "xmakro",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160145": {
+   "author": "nbdd0121",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160307": {
+   "author": "GuillaumeGomez",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160282": {
+   "author": "JonathanBrouwer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159861": {
+   "author": "Kristianerik",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "157928": {
+   "author": "Jarcho",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160210": {
+   "author": "ada4a",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160162": {
+   "author": "nia-e",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159998": {
+   "author": "pluiee",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159907": {
+   "author": "mejrs",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159864": {
+   "author": "zakrad",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159672": {
+   "author": "rperier",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "159245": {
+   "author": "icmccorm",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154202": {
+   "author": "ytmimi",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160247": {
+   "author": "jieyouxu",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159710": {
+   "author": "Kobzol",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "159999": {
+   "author": "Kobzol",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "160157": {
+   "author": "beetrees",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160284": {
+   "author": "JonathanBrouwer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "160208": {
+   "author": "GuillaumeGomez",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  }
+ },
+ "nodejs/node": {
+  "64952": {
+   "author": "Rawal27",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64847": {
+   "author": "pimterry",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64710": {
+   "author": "pimterry",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64339": {
+   "author": "pipobscure",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "61999": {
+   "author": "liuxingbaoyu",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64798": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64946": {
+   "author": "boneskull",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64945": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "64942": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "64941": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "64940": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "64939": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "64769": {
+   "author": "Renegade334",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "62300": {
+   "author": "efekrskl",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64783": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64935": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64934": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64933": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64932": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64931": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64930": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64929": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64928": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64927": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64926": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64925": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64657": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "63975": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "63900": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "63622": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "63134": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "63104": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64553": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64552": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64557": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64211": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64199": {
+   "author": "npm-cli-bot",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64730": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64314": {
+   "author": "jasnell",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64654": {
+   "author": "github-actions",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64655": {
+   "author": "github-actions",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64896": {
+   "author": "greenheadHQ",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64843": {
+   "author": "RafaelGSS",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64718": {
+   "author": "mcollina",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64700": {
+   "author": "mcollina",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64900": {
+   "author": "greenheadHQ",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64872": {
+   "author": "pimterry",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64904": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "63963": {
+   "author": "PickBas",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64660": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64899": {
+   "author": "Rawal27",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64772": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64881": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "63949": {
+   "author": "panva",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64744": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "64860": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64874": {
+   "author": "soulee-dev",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64794": {
+   "author": "araujogui",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64414": {
+   "author": "davidje13",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64789": {
+   "author": "YspritanHyzygy",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64747": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "64746": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "64862": {
+   "author": "MikeMcC399",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64516": {
+   "author": "marco-ippolito",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64727": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64853": {
+   "author": "anonrig",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "63685": {
+   "author": "joyeecheung",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64840": {
+   "author": "leah-1ee",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64837": {
+   "author": "Rawal27",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64486": {
+   "author": "sjungwon03",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64816": {
+   "author": "HoonDongKang",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64754": {
+   "author": "sjungwon03",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64818": {
+   "author": "mcollina",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64829": {
+   "author": "nodejs-github-bot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "49279": {
+   "author": "zcbenz",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64720": {
+   "author": "pimterry",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64737": {
+   "author": "efekrskl",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "63577": {
+   "author": "semimikoh",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64614": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64573": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64467": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64559": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64417": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64527": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64462": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64421": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64380": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64350": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64385": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64551": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64445": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64420": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64813": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64812": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64639": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64691": {
+   "author": "trivikr",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "64814": {
+   "author": "soulee-dev",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64571": {
+   "author": "Archkon",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64679": {
+   "author": "Archkon",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "64808": {
+   "author": "IlyasShabi",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  }
+ },
+ "pytorch/pytorch": {
+  "189318": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "188277": {
+   "author": "frgossen",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "188192": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188190": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188160": {
+   "author": "malfet",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187560": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "190598": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "187983": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187973": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187684": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187666": {
+   "author": "frgossen",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "187423": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187099": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188161": {
+   "author": "eellison",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "187422": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187417": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187416": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187345": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187172": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187058": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187055": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "186992": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "186978": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "186821": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "186015": {
+   "author": "malfet",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "186654": {
+   "author": "malfet",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188925": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188594": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188551": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188443": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188409": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188197": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188196": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188162": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "188117": {
+   "author": "eellison",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "187348": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187342": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "187382": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "185677": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "187349": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187347": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "183346": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "182178": {
+   "author": "eellison",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "181940": {
+   "author": "williamwen42",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "180809": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181019": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "187001": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "186959": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "186814": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "186171": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "186813": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "182369": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181886": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "182311": {
+   "author": "malfet",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181550": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181549": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181548": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "182157": {
+   "author": "weifengpy",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "182184": {
+   "author": "atalman",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181925": {
+   "author": "anijain2305",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "181921": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181441": {
+   "author": "azahed98",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "181751": {
+   "author": "Lucaskabela",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "181721": {
+   "author": "malfet",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181702": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181454": {
+   "author": "angelayi",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "181608": {
+   "author": "janeyx99",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "181669": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181613": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181577": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181381": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181364": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181349": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "184599": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  },
+  "181298": {
+   "author": "manuelcandales",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "7006": {
+   "author": "t-vi",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181294": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181287": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181211": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181170": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181137": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181107": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181141": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "181070": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180964": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180916": {
+   "author": "mlazos",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "180934": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180903": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180897": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180693": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180878": {
+   "author": "ZainRizvi",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "180847": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180715": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180692": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180691": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180690": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180687": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180600": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "180508": {
+   "author": "pytorchbot",
+   "author_type": "User",
+   "author_association": "COLLABORATOR"
+  },
+  "182689": {
+   "author": "dependabot",
+   "author_type": "Bot",
+   "author_association": "CONTRIBUTOR"
+  }
+ },
+ "python/cpython": {
+  "155114": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154815": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154143": {
+   "author": "encukou",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "154081": {
+   "author": "encukou",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "153608": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "153592": {
+   "author": "vstinner",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "153165": {
+   "author": "hugovk",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "153041": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "152611": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "152527": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155125": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "152005": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "152000": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "151994": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "151567": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154691": {
+   "author": "deadlovelll",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "151401": {
+   "author": "StanFromIreland",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "151057": {
+   "author": "StanFromIreland",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "150843": {
+   "author": "encukou",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "150020": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "149066": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "148835": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "148519": {
+   "author": "StanFromIreland",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "148503": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "148132": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "146025": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155149": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155156": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "145999": {
+   "author": "StanFromIreland",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "145671": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "145514": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155157": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155118": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155021": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154988": {
+   "author": "bmwiedemann",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154681": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "153708": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155150": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155142": {
+   "author": "deadlovelll",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155110": {
+   "author": "kulikjak",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155130": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155129": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155131": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155128": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155133": {
+   "author": "kumaraditya303",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155136": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155135": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155134": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155064": {
+   "author": "ichard26",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154900": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155138": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155137": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155139": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "153663": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "150197": {
+   "author": "zware",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155132": {
+   "author": "kumaraditya303",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155086": {
+   "author": "Dreamsorcerer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154830": {
+   "author": "markshannon",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155002": {
+   "author": "wjakob",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155085": {
+   "author": "LindaSummer",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154989": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154991": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154990": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155111": {
+   "author": "mhsmith",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "149815": {
+   "author": "encukou",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "154867": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155112": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155113": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "154868": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "154327": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "144776": {
+   "author": "thunder-coding",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154994": {
+   "author": "encukou",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "154222": {
+   "author": "bhuvi27",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155108": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155107": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155062": {
+   "author": "BHUVANSH855",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155091": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155093": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155094": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155036": {
+   "author": "sirosen",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "152385": {
+   "author": "lucascolley",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155008": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155088": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155083": {
+   "author": "BHUVANSH855",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155081": {
+   "author": "BHUVANSH855",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155058": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155076": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155077": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155078": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154528": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155066": {
+   "author": "mhsmith",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155065": {
+   "author": "mhsmith",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155054": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155047": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "154336": {
+   "author": "serhiy-storchaka",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155012": {
+   "author": "mhsmith",
+   "author_type": "User",
+   "author_association": "MEMBER"
+  },
+  "155056": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "155057": {
+   "author": "miss-islington",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154967": {
+   "author": "stefanor",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  },
+  "154901": {
+   "author": "BHUVANSH855",
+   "author_type": "User",
+   "author_association": "CONTRIBUTOR"
+  }
+ }
+}

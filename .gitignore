@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+# 第三方论文全文不随本仓库分发；只提交 lit/manifest.csv 与 lit/quotes.md
+lit/fulltext/
+lit/*.pdf
+lit/*.tar.gz
+lit/*.txt

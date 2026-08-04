@@ -1,0 +1,23 @@
+committedDate,messageHeadline
+2026-07-31T12:34:51Z,Remove calli target tagging
+2026-07-31T12:51:04Z,Progress calli validation
+2026-07-31T12:53:46Z,Address cdac and 32-bit follow-ups
+2026-07-31T13:38:26Z,Address PR feedback on x86-specific ICF handling
+2026-07-31T19:31:12Z,Make indirect calli m_Datum handling x86-specific
+2026-07-31T20:14:44Z,Address latest review feedback
+2026-07-31T20:21:08Z,Handle interpreter stub intrinsic
+2026-07-31T20:59:03Z,Use a JIT flag for ICF stub MethodDesc publication
+2026-07-31T21:36:10Z,Address latest JIT review feedback
+2026-07-31T22:18:02Z,Remove GetDelegateTarget stub helper
+2026-08-01T11:53:34Z,Revert importercalls.cpp changes per review
+2026-08-01T11:58:55Z,Restore lower.cpp MethodDesc publication path
+2026-08-01T12:21:34Z,Move ICF fallback assignment into else branch
+2026-08-02T03:49:10Z,Revert SetNextCallFrameMethodDesc changes
+2026-08-02T04:51:19Z,Remove unused ICF MethodDesc publish flag
+2026-08-02T05:16:51Z,Revert JITEE version GUID change
+2026-08-02T13:22:51Z,Fix InlinedCallFrame marker masking in GetFunction_Impl
+2026-08-02T13:46:02Z,Address remaining review feedback
+2026-08-02T14:09:30Z,Use named InlinedCallFrame marker mask
+2026-08-02T14:26:26Z,Update src/coreclr/vm/frames.h
+2026-08-02T14:46:52Z,Mask ICF exception-helper marker in cDAC
+2026-08-02T15:56:19Z,Update stale cDAC StackWalk docs

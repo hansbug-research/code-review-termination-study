@@ -1,0 +1,5 @@
+group,n,median_review_submissions,pct_zero_formal_review,pct_zero_review_and_comment,median_loc_changed,median_hours_to_merge
+人类作者 / 成熟仓库（D1）,500,1,28.6,4.2,38,67.8
+agent 作者 / 全样本（D3）,1600,0,71.0,22.62,83,0.8
+agent 作者 / star≥500（D3）,78,1,35.9,29.49,38,11.4
+agent 作者 / star<500（D3）,1522,0,72.8,22.27,85,0.7

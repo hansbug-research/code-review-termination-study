@@ -1,0 +1,5 @@
+repo,since,merged_total,revert_titled,revert_pct
+kubernetes/kubernetes,2026-02-01,1971,18,0.91
+nodejs/node,2026-02-01,1358,6,0.44
+python/cpython,2026-02-01,5573,31,0.56
+rust-lang/rust,2026-02-01,4303,46,1.07

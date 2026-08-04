@@ -1,0 +1,29 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install deps
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+          python -m pip install --quiet matplotlib
+      # 门 0：verifier。凡能自动判定的一律在这里裁决，不留给评审意见（report.md §8.1）
+      - name: Recompute derived data from raw/
+        run: python3 scripts/analyze.py
+      - name: Assert derived data is unchanged
+        run: git diff --exit-code -- derived/
+      - name: Regenerate figures
+        run: python3 scripts/plot.py
+      - name: Assert every claim in the prose matches derived/stats.json
+        run: python3 scripts/verify.py

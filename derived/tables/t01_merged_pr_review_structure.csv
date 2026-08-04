@@ -1,0 +1,6 @@
+repo,n,median_hours_to_merge,median_loc_changed,median_files,median_commits,pct_zero_changes_requested,pct_ge1_changes_requested,pct_ge2_changes_requested,max_changes_requested,median_review_submissions,p90_review_submissions,max_review_submissions,pct_zero_formal_review,median_distinct_human_reviewers,median_approvals,pct_with_bot_reviewer
+kubernetes/kubernetes,100,235.1,54,2,1,99.0,1.0,1.0,2,0,8,293,57.0,0,0,0.0
+rust-lang/rust,100,64.8,105,4,1,93.0,7.0,1.0,2,1,12,49,30.0,1,0,0.0
+nodejs/node,100,123.7,39,2,1,98.0,2.0,0.0,1,3,7,33,0.0,3,3,2.0
+pytorch/pytorch,100,11.6,31,2,1,99.0,1.0,0.0,1,1,2,9,2.0,1,1,0.0
+python/cpython,100,27.6,26,3,1,100.0,0.0,0.0,0,0,2,32,54.0,0,0,0.0
