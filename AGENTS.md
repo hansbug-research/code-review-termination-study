@@ -6,7 +6,8 @@
 
 ```bash
 python3 scripts/analyze.py && python3 scripts/plot.py \
-  && python3 scripts/gen_references.py && python3 scripts/verify.py
+  && python3 scripts/gen_references.py \
+  && python3 scripts/check_math.py && python3 scripts/verify.py
 ```
 
 ## Code Review Rules
@@ -29,6 +30,14 @@ python3 scripts/analyze.py && python3 scripts/plot.py \
 
 - 正文引用只写编号而不带 key（如写成 `[18]` 而非 `[[18]](#ref-sadowski2018)`）。
   Safe path：始终带 key，否则「编号 ↔ 文献」的映射无法被机器核对。
+
+### Markdown 里的 LaTeX
+
+- 公式内出现「反斜杠 + ASCII 标点」（`\{`、`\%`、`\_` 等）。
+  Safe path：Markdown 会先剥掉一层反斜杠，花括号用 `\lbrace` / `\rbrace`，百分号移到公式外；表格里的 `\|` 例外。
+
+- 行内公式的开定界符 `$` 紧跟中文标点，或 `$$` 与内容同行，或公式内含中文。
+  Safe path：中文标点与 `$` 之间加半角空格；`$$` 独占一行；中文一律留在公式外。详见 CLAUDE.md「在 Markdown 里写 LaTeX」。
 
 ### 结论强度
 

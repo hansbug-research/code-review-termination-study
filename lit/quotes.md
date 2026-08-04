@@ -72,7 +72,7 @@
 
 > We recast self-correction as a closed-loop feedback-control problem in which the same model is both controller and plant, and analyze its error dynamics via a two-state Markov model over {Correct, Incorrect}, parameterized by the Error Introduction Rate (EIR) and Error Correction Rate (ECR). The model yields a directly measurable stability threshold—iterate only when $\mathrm{ECR}/\mathrm{EIR} > \mathrm{Acc}/(1-\mathrm{Acc})$—in which EIR acts as a stability margin and prompting becomes lightweight controller design.
 
-> Empirically, across 7 models and 3 datasets (GSM8K, MATH, StrategyQA), a sharp near-zero EIR boundary ($\lesssim 0.5\%$) cleanly separates beneficial from harmful self-correction: only o3-mini ($+3.4$ pp), Claude Opus 4.6 ($+0.6$ pp), and o4-mini ($\pm 0$ pp) stay non-degrading, while GPT-5 and four others lose accuracy.
+> Empirically, across 7 models and 3 datasets (GSM8K, MATH, StrategyQA), a sharp near-zero EIR boundary ($\lesssim$ 0.5%) cleanly separates beneficial from harmful self-correction: only o3-mini ($+3.4$ pp), Claude Opus 4.6 ($+0.6$ pp), and o4-mini ($\pm 0$ pp) stay non-degrading, while GPT-5 and four others lose accuracy.
 
 > A verify-first prompt intervention then provides causal evidence: it drives GPT-4o-mini's EIR from 2% to 0% and converts a $-6.2$ pp degradation into $+0.2$ pp (paired McNemar, $p<10^{-4}$), with negligible change on already-sub-threshold models—exactly as the diagnostic predicts.
 
@@ -237,7 +237,7 @@
 
 ### 9.6 EIR/ECR 的逐模型数值
 
-早期草稿曾写「Opus 4.6 EIR 0.2%、ECR 25.0%；o3-mini ECR 44.1%」。本次核对只在摘要与定义处定位到 **EIR 阈值 $\lesssim 0.5\%$** 与**逐模型净收益**（o3-mini +3.4 pp、Claude Opus 4.6 +0.6 pp、o4-mini ±0 pp，GPT-5 及另四个模型退化），未定位到上述逐模型 EIR/ECR 点值。正文改用已核对的阈值与净收益。
+早期草稿曾写「Opus 4.6 EIR 0.2%、ECR 25.0%；o3-mini ECR 44.1%」。本次核对只在摘要与定义处定位到 **EIR 阈值 $\lesssim$ 0.5%** 与**逐模型净收益**（o3-mini +3.4 pp、Claude Opus 4.6 +0.6 pp、o4-mini ±0 pp，GPT-5 及另四个模型退化），未定位到上述逐模型 EIR/ECR 点值。正文改用已核对的阈值与净收益。
 
 ---
 
