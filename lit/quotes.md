@@ -84,9 +84,9 @@
 
 > The net benefit is zero ($\text{NB}(k+1) = 0$) if and only if: $\frac{\text{ECR}(k)}{\text{EIR}(k)} = \frac{\text{Acc}(k)}{1 - \text{Acc}(k)}$
 
-> If $\text{EIR}(k) \to \text{EIR}^*$ and $\text{ECR}(k) \to \text{ECR}^*$, the steady-state accuracy is: $\pi^* = \frac{\text{ECR}^*}{\text{EIR}^* + \text{ECR}^*}$
+> If $\text{EIR}(k) \to \text{EIR}^{\ast}$ and $\text{ECR}(k) \to \text{ECR}^{\ast}$, the steady-state accuracy is: $\pi^{\ast} = \frac{\text{ECR}^{\ast}}{\text{EIR}^{\ast} + \text{ECR}^{\ast}}$
 
-> Under stationary rates, convergence is geometric: $|\text{Acc}(k) - \pi^*| = |1 - \text{EIR}^* - \text{ECR}^*|^k \cdot |\text{Acc}(0) - \pi^*|$
+> Under stationary rates, convergence is geometric: $|\text{Acc}(k) - \pi^{\ast}| = |1 - \text{EIR}^{\ast} - \text{ECR}^{\ast}|^k \cdot |\text{Acc}(0) - \pi^{\ast}|$
 
 操作建议：
 

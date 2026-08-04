@@ -7,7 +7,7 @@ CommonMark 允许反斜杠转义任意 ASCII 标点，因此 `\\{`、`\\%`、`\\
 失效。本仓库首版实际踩了 18 处（逐条清单见 audit/math_render_audit.md），且全部是「本地看着
 没问题、网页上错了」，人眼不可靠，所以做成检查项。
 
-检出的五类问题：
+检出的六类问题：
 
   E1 反斜杠 + ASCII 标点   `$\\{a,b\\}$` → Markdown 先转义成 `${a,b}$`，花括号变成分组符而不显示；
                           `$0.5\\%$` → 变成 `$0.5%$`，`%` 在 TeX 里是注释符，其后内容全部消失。
@@ -21,6 +21,9 @@ CommonMark 允许反斜杠转义任意 ASCII 标点，因此 `\\{`、`\\%`、`\\
                           是实测出来的：本仓库首版有 12 处这种写法，网页上全部漏渲染，而本地
                           Markdown 预览器多半照常显示，因此只能靠检查项守住。改法是在中文标点
                           与 `$` 之间加一个半角空格。
+  E6 公式内的 `*`          星号会被 Markdown 的强调解析先行消费，把公式拆成 `<em>` 而不是数学。
+                          `_` 因为有「词内下划线不构成强调」的规则而幸免，`*` 没有这条豁免。
+                          改法：上标星号写 `^{\ast}`，二元运算符写 `\ast` 或 `\star`。
 
 用法：
     python3 scripts/check_math.py            # 有问题则退出码 1
@@ -98,6 +101,9 @@ def scan(path: Path) -> list[tuple[str, int, str, str]]:
                         f"公式内 `\\{ch}` 会被 Markdown 先行转义（{kind}）"))
         if CJK.search(body):
             out.append(("E2", line_no, body.strip()[:90], f"公式内含 CJK 字符（{kind}）"))
+        if "*" in body:
+            out.append(("E6", line_no, body.strip()[:90],
+                        f"公式内的 `*` 会被 Markdown 的强调解析吃掉（{kind}），改用 `\\ast`"))
 
     for m in DISPLAY.finditer(text):
         check(m.group(1), text[:m.start()].count("\n") + 1, "行间")

@@ -29,9 +29,9 @@ python3 scripts/analyze.py && python3 scripts/plot.py \
 
 ## 在 Markdown 里写 LaTeX
 
-**先记住这条因果**：GitHub 的渲染管线**先做 Markdown 的反斜杠转义与强调解析，再把 `$...$` 交给 MathJax**。所以公式在本地预览器里正确，不代表在网页上正确——本仓库首版有 18 处公式在 GitHub 上渲染错误（逐条清单与证据见 [`audit/math_render_audit.md`](audit/math_render_audit.md)），本地全部看不出来。**唯一可靠的判据是 `python3 scripts/check_math.py`，提交前必须跑。**
+**先记住这条因果**：GitHub 的渲染管线**先做 Markdown 的反斜杠转义与强调解析，再把 `$...$` 交给 MathJax**。所以公式在本地预览器里正确，不代表在网页上正确——本仓库首版有 19 处公式在 GitHub 上渲染错误（逐条清单与证据见 [`audit/math_render_audit.md`](audit/math_render_audit.md)），本地全部看不出来。**唯一可靠的判据是 `python3 scripts/check_math.py`，提交前必须跑。**
 
-五条硬规则，逐条对应一类实际发生过的故障：
+六条硬规则，逐条对应一类实际发生过的故障：
 
 1. **公式内不许出现「反斜杠 + ASCII 标点」。** CommonMark 允许转义任意 ASCII 标点，所以 `\{`、`\}`、`\%`、`\_`、`\&`、`\#` 会在到达 MathJax 之前被剥掉一层反斜杠。后果：`$\{a,b\}$` 变成 `${a,b}$`，花括号成了分组符、根本不显示；`$0.5\%$` 变成 `$0.5%$`，而 `%` 在 TeX 里是注释符，其后内容**静默消失**。
    - 花括号用 `\lbrace` / `\rbrace`；
@@ -44,9 +44,11 @@ python3 scripts/analyze.py && python3 scripts/plot.py \
 
 4. **公式里不许出现中文。** MathJax 的字体不含 CJK 字形，`\text{中文}` 的显示完全依赖浏览器回退，结果不可控。把中文留在公式外：写 `**评审算子** $R : D \to 2^{F}$`，不要写 `$\text{评审算子}\quad R : D \to 2^{F}$`。
 
-5. **正文里的美元符号一律写 `\$`。** 否则两个金额会被配对成一个公式，把中间整段文字吞掉。
+5. **公式里不许出现 `*`。** 星号会被 Markdown 的强调解析先行消费，把整个公式拆成 `<em>` 标签——`$\pi^* = \mathrm{ECR}^*/(\mathrm{EIR}^*+\mathrm{ECR}^*)$` 在网页上会变成 `$\pi^` 加一串斜体。`_` 因为有「词内下划线不构成强调」的规则而幸免，`*` 没有这条豁免。上标星号写 `^{\ast}`，二元运算符写 `\ast` 或 `\star`。
 
-配套的检查项在 `scripts/check_math.py`（E1–E5），CI 会跑。它检的是**写法**不是**语义**——公式写错了它管不着，那是评审的事。
+6. **正文里的美元符号一律写 `\$`。** 否则两个金额会被配对成一个公式，把中间整段文字吞掉。
+
+配套的检查项在 `scripts/check_math.py`（E1–E6），CI 会跑。它检的是**写法**不是**语义**——公式写错了它管不着，那是评审的事。
 
 ## 出图
 

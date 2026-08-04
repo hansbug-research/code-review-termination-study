@@ -140,7 +140,7 @@ $$
 
 > "The model yields a directly measurable stability threshold—**iterate only when $\mathrm{ECR}/\mathrm{EIR} > \mathrm{Acc}/(1-\mathrm{Acc})$**—in which EIR acts as a stability margin and prompting becomes lightweight controller design."
 
-稳态与收敛速度亦有闭式： $\pi^* = \mathrm{ECR}^*/(\mathrm{EIR}^*+\mathrm{ECR}^*)$，且 $|\mathrm{Acc}(k)-\pi^*| = |1-\mathrm{EIR}^*-\mathrm{ECR}^*|^k \cdot |\mathrm{Acc}(0)-\pi^*|$（几何收敛）。
+稳态与收敛速度亦有闭式： $\pi^{\ast} = \mathrm{ECR}^{\ast}/(\mathrm{EIR}^{\ast}+\mathrm{ECR}^{\ast})$，且 $|\mathrm{Acc}(k)-\pi^{\ast}| = |1-\mathrm{EIR}^{\ast}-\mathrm{ECR}^{\ast}|^k \cdot |\mathrm{Acc}(0)-\pi^{\ast}|$（几何收敛）。
 
 ![图 13](figures/fig13_iteration_stability_region.png)
 
