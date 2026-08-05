@@ -13,10 +13,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+      # CJK 字体是出图必需的。apt 镜像偶发卡死会把整个 job 拖到 15 分钟超时被取消
+      # （2026-08-05 发生过一次），故给这一步单独设短超时并重试。
       - name: Install deps
+        timeout-minutes: 6
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq fonts-noto-cjk
+          for i in 1 2 3; do
+            sudo apt-get update -qq -o Acquire::Retries=3 -o Acquire::http::Timeout=20 \
+              && sudo apt-get install -y -qq --no-install-recommends \
+                 -o Acquire::Retries=3 -o Acquire::http::Timeout=20 fonts-noto-cjk \
+              && break
+            echo "apt 第 $i 次失败，重试"; sleep 10
+          done
+          fc-list | grep -qi "noto sans cjk" || { echo "::error::CJK 字体未安装"; exit 1; }
           python -m pip install --quiet matplotlib
       # 门 0：verifier。凡能自动判定的一律在这里裁决，不留给评审意见（report.md §8.1）
       - name: Recompute derived data from raw/
