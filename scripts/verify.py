@@ -52,7 +52,7 @@ a("语料规模（§9.2 证据）",
   f'D1 {S["corpus_by_dataset"]["d1"]} + D2 {S["corpus_by_dataset"]["d2"]} '
   f'+ D3 {thousands(S["corpus_by_dataset"]["d3"])} + 案例 {S["corpus_by_dataset"]["d5"]}')
 CHECKS.append(("D7 完全包含于 D3", "corpus_d7_subset_of_d3", bool(S["corpus_d7_subset_of_d3"])))
-a("API 调用次数", f'{S["api_calls"]} 次 GraphQL 调用')
+a("API 调用次数（D1–D7）", f'共 **{S["api_calls"]} 次 API 调用**')
 a("采集缺口数", f'共记录 **{len(S["collection_gaps"])} 处缺口**')
 
 # ---------------------------------------------------------------- D1
@@ -150,6 +150,33 @@ a("D8 k8s lgtm 命中", f'kubernetes 的 {S["d8_k8s_lgtm_of_zero"]} 个零 revie
                       f'（{S["d8_k8s_lgtm_of_zero"]}/{S["d8_k8s_lgtm_of_zero"]}）')
 a("D8 cpython backport 命中", f'cpython 54 个零 review PR 中 {S["d8_cpython_missislington_of_zero"]} 个')
 
+# ---------------------------------------------------------------- D9 被阻塞 PR 的去向
+a("D9 未合并侧样本量", f'{S["d9_n_blocked_closed"]} 个 PR')
+a("D9 已合并侧样本量", f'{S["d9_n_blocked_merged"]} 个 PR')
+a("D9 条件概率下限", f'**{S["d9_pcgb_min"]}%**')
+a("D9 条件概率上限", f'**{S["d9_pcgb_max"]}%**')
+a("D9 稳定估计仓库数", f'{S["d9_n_repos_stable"]} 个估计稳定的仓库')
+a("D9 关闭侧中位天数", f'**{S["d9_closed_median_days"]} 天**')
+a("D9 关闭侧 p90/最大", f'{S["d9_closed_p90_days"]} / {S["d9_closed_max_days"]} 天')
+a("D9 超 90 天占比", f'{S["d9_closed_pct_over_90d"]}%')
+a("D9 机器人关闭占比", f'{S["d9_closed_pct_bot_closed"]}%')
+a("D9 振荡占比", f'**{S["d9_closed_pct_oscillated"]}%**')
+a("D9 最大关闭次数", f'**{S["d9_closed_max_close_events"]}** 次')
+a("D9 对照组中位天数", f'**{S["d9_unblocked_closed_median_days"]} 天**')
+a("D9 对照组样本量", f'n={S["d9_unblocked_closed_n"]}')
+a("D9 悬置倍数", f'**{S["d9_rot_ratio"]} 倍**')
+a("D9 阻塞到合并中位", f'**从首次阻塞到合并的中位时长只有 {S["d9_merged_median_days_block_to_merge"]} 天**')
+a("D9 阻塞到合并最大", f'最长 {S["d9_merged_max_days_block_to_merge"]} 天')
+a("D9 阻塞者亦批准占比", f'**{S["d9_merged_pct_blocker_also_approved"]}% 的案例里提出阻塞的人后来自己给了批准**')
+a("D9 交叉引用占比", f'**{S["d9_closed_n_xref_merged_pr"]} 个（{S["d9_closed_pct_xref_merged_pr"]}%）**')
+for repo in S["d9_by_repo"]:
+    d = S["d9_by_repo"][repo]
+    a(f"D9 {repo} 条件概率", f'{d["pct_closed_given_blocked"]}%')
+CHECKS.append(("D9 采集无缺口", str(S.get("d9_gaps")) or "无", not S.get("d9_gaps")))
+CHECKS.append(("D9 时长口径未被状态漂移污染",
+               f'n_with_duration={S["d9_closed_n_with_duration"]} == n={S["d9_n_blocked_closed"]}',
+               S["d9_closed_n_with_duration"] == S["d9_n_blocked_closed"]))
+
 # ---------------------------------------------------------------- 案例 A
 CA = S["case_a"]
 a("案例 A 标识", f'{CA["repo"]}#{CA["number"]}')
@@ -229,6 +256,13 @@ a("撤销引用数（正文）", f'**撤销了 {n_revoked} 条引用**')
 LITROWS = list(csv.DictReader((ROOT / "lit" / "manifest.csv").open(encoding="utf-8")))
 a("文献篇数", f'全文核对文献 **{len(LITROWS)} 篇**')
 a("文献篇数（方法节）", f'下载 {len(LITROWS)} 篇论文全文')
+# 散落在正文里的计数曾多次过期（见 §9.4 的 D-系列发现），故逐处覆盖而非只查抬头
+a("文献篇数（复现步骤）", f'# {len(LITROWS)} 篇全文（不随仓库分发）')
+a("文献篇数（局限）", f'**文献。** {len(LITROWS)} 篇全文中')
+a("文献篇数（README 脚本表）", f'{len(LITROWS)} 篇全文下载与校验和')
+a("表数（复现步骤）", f'derived/tables/*.csv（{len(TABS)} 张）')
+a("表数（附录 A）", f'`derived/tables/` 下的 {len(TABS)} 张表')
+a("图数（复现步骤）", f'figures/*.png（{len(FIGS)} 张）')
 
 # ---------------------------------------------------------------- 引用完整性
 # 正文引用写作 `[[12]](#ref-key)`，参考文献条目写作 `<a id="ref-key"></a>**[12]**`。
@@ -256,6 +290,7 @@ CHECKS.append(("不存在从未被正文引用的条目", str(uncited) or "无",
 CHECKS.append(("参考文献 key 与 references.json 完全对应",
                str(sorted(set(listed) ^ REF_KEYS)) or "一致", set(listed) == REF_KEYS))
 a("参考文献条数（抬头）", f"参考文献 **{len(REFS)} 条**")
+a("参考文献条数（README 引用节）", f'报告所引的 {len(REFS)} 条参考文献')
 
 BIB = (ROOT / "references.bib").read_text()
 CHECKS.append(("references.bib 条目数一致",

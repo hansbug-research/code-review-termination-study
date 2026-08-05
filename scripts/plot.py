@@ -606,6 +606,60 @@ def fig13_stability_region() -> None:
     save(fig, "fig13_iteration_stability_region.png")
 
 
+# ---------------------------------------------------------------- fig17
+def fig17_blocked_fate() -> None:
+    """D9：逐仓库的 P(最终未合并 | 曾被正式阻塞)。单一测度 → 单色 + 灰化不稳估计。"""
+    rows = table("t12_blocked_pr_fate_by_repo.csv")
+    if not rows:
+        return
+    rows = sorted(rows, key=lambda r: float(r["pct_closed_given_blocked"]))
+    fig, ax = plt.subplots(figsize=(9.0, 3.0))
+    for i, r in enumerate(rows):
+        v = float(r["pct_closed_given_blocked"])
+        unstable = r["estimate_unstable"] == "True"
+        rbar(ax, i, v, BASE if unstable else C[0])
+        ax.text(v + 1.6, i, f"{v:.1f}%" + ("（估计不稳）" if unstable else ""),
+                va="center", color=INK2, fontsize=9.5)
+    ax.set_yticks(list(range(len(rows))))
+    ax.set_yticklabels([short(r["repo"]) for r in rows], fontsize=10)
+    ax.set_xlim(0, 128)
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:.0f}%" if v <= 100 else ""))
+    ax.invert_yaxis()
+    ax.set_title("「阻塞」在不同项目里不是同一件事：被阻塞后未合并的概率相差近 10 倍",
+                 fontsize=12, pad=12, loc="left")
+    finish(ax, xlabel="P(最终未合并 | 曾收到 CHANGES_REQUESTED)，按总体基数加权", xgrid=True)
+    save(fig, "fig17_blocked_pr_fate_by_repo.png")
+
+
+# ---------------------------------------------------------------- fig18
+def fig18_block_limbo() -> None:
+    """D9：阻塞之后的三条路，同一量纲（天）故可同轴对比。对数刻度，跨度达三个数量级。"""
+    if not S.get("d9_present"):
+        return
+    items = [
+        (f'走出来了：被阻塞但最终合并\nn={S["d9_n_blocked_merged"]}',
+         S["d9_merged_median_days_create_to_merge"], C[2]),
+        (f'对照：从未被阻塞、关闭未合并\nn={S["d9_unblocked_closed_n"]}',
+         S["d9_unblocked_closed_median_days"], BASE),
+        (f'没走出来：被阻塞且最终关闭\nn={S["d9_n_blocked_closed"]}',
+         S["d9_closed_median_days"], STATUS_CRIT),
+    ]
+    fig, ax = plt.subplots(figsize=(9.0, 3.2))
+    for i, (lab, v, col) in enumerate(items):
+        ax.barh(i, v, height=0.5, color=col, linewidth=0, zorder=3)
+        ax.text(v * 1.12, i, f"{v} 天", va="center", color=INK2, fontsize=10)
+    ax.set_yticks(list(range(len(items))))
+    ax.set_yticklabels([x[0] for x in items], fontsize=9.2)
+    ax.set_xscale("log")
+    ax.set_xlim(0.8, 400)
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:g}"))
+    ax.invert_yaxis()
+    ax.set_title(f'阻塞不产生裁决，产生悬置：死掉的一侧比对照组多耗 {S["d9_rot_ratio"]} 倍时间',
+                 fontsize=12, pad=12, loc="left")
+    finish(ax, xlabel="从创建到终态的中位天数（对数刻度，三组同口径）", xgrid=True)
+    save(fig, "fig18_block_limbo.png")
+
+
 # ---------------------------------------------------------------- fig16
 def fig16_self_review() -> None:
     """两次变更周期各自的 |B_n| 曲线（§9.2、§9.4）。
@@ -626,9 +680,10 @@ def fig16_self_review() -> None:
         rs = [r for r in rows if int(r["cycle"]) == cy]
         xs = [int(r["round"]) for r in rs]
         ys = [int(r["blocking_open"]) for r in rs]
+        names = {1: "正文与数据", 2: "引用体系", 3: "出口集合（范围固定后）"}
         ax.plot(xs, ys, color=C[k], linewidth=2, marker="o", markersize=9,
                 markeredgecolor=SURFACE, markeredgewidth=2, zorder=3,
-                label=f"周期 {cy}：{'正文与数据' if cy == 1 else '引用体系'}")
+                label=f"周期 {cy}：{names.get(cy, cy)}")
         for x, y in zip(xs, ys):
             ax.annotate(f"|B_{x-1}| = {y}", (x, y), textcoords="offset points",
                         xytext=(0, 12), ha="center", color=INK2, fontsize=9.5)
@@ -637,7 +692,7 @@ def fig16_self_review() -> None:
     ax.set_xticklabels([f"第 {x} 轮" for x in xs_all])
     ax.set_ylim(-0.8, max(int(r["blocking_open"]) for r in rows) + 1.4)
     ax.set_xlim(min(xs_all) - 0.4, max(xs_all) + 0.4)
-    ax.set_title("两次变更周期的自审：阻塞级发现数均严格递减至 0（不变量 M，轮数上限 3）",
+    ax.set_title("三次变更周期的自审：阻塞级发现数均严格递减至 0（不变量 M，轮数上限 3）",
                  fontsize=11.5, pad=12, loc="left")
     ax.legend(loc="upper right", fontsize=9)
     finish(ax, ylabel="开放的阻塞级发现数 |B_n|", ygrid=True)
@@ -649,7 +704,8 @@ def main() -> None:
                fig04_gate_strength, fig05_agent_two_worlds, fig06_agent_latency,
                fig07_case_a_states, fig08_case_b_actors, fig09_case_b_ai_reviewer,
                fig10_bot_signal, fig11_revert, fig12_literature_timeline,
-               fig13_stability_region, fig14_offchannel, fig15_cluster_sensitivity, fig16_self_review):
+               fig13_stability_region, fig14_offchannel, fig15_cluster_sensitivity, fig17_blocked_fate,
+               fig18_block_limbo, fig16_self_review):
         try:
             fn()
         except Exception as exc:                      # noqa: BLE001

@@ -658,6 +658,128 @@ def build_comparison() -> None:
         - S["d1_pooled_pct_zero_review_and_comment"], 2)
 
 
+# ---------------------------------------------------------------- D9：被阻塞 PR 的去向
+def analyze_d9() -> None:
+    """一个 PR 一旦被正式阻塞，它后来怎么了。
+
+    这是「循环没能收敛时会发生什么」的直接测量。三件事必须分开算：
+
+      (a) 条件概率 P(未合并 | 曾被阻塞)。D1 与 D2 是两个独立抽样框（各取最近 100 个），
+          直接相除会得到一个无意义的数；必须用总体基数加权。
+      (b) 被阻塞且未合并的一侧：终结得干不干脆。关键对照量是「从未被阻塞的关闭 PR」的
+          开放天数——若两者接近，说明阻塞被及时裁决；若差很多，说明阻塞导致的是烂掉。
+      (c) 被阻塞但最终合并的一侧。只看死亡会得到「阻塞即死刑」的错误印象，必须同时看
+          走出来的那批用了多久、靠什么走出来。
+    """
+    d9 = load("d9_blocked_fate.json")
+    if not d9:
+        S["d9_present"] = False
+        return
+    S["d9_present"] = True
+    bc, bm = d9["blocked_closed"], d9["blocked_merged"]
+    S["d9_n_blocked_closed"] = len(bc)
+    S["d9_n_blocked_merged"] = len(bm)
+    S["d9_base_since"] = d9["base_since"]
+
+    # ---- (a) 条件概率
+    d1, d2 = load("d1_merged_prs.json") or {}, load("d2_closed_prs.json") or {}
+    rows = []
+    for repo, b in d9["base"].items():
+        if not b.get("reliable"):
+            continue
+        nm = sum(1 for p in d1.get(repo, []) if p.get("mergedAt") and cr_count(p) >= 1)
+        nc = sum(1 for p in d2.get(repo, [])
+                 if p.get("closedAt") and not p.get("mergedAt") and cr_count(p) >= 1)
+        em = nm / 100 * b["merged_total"]
+        ec = nc / 100 * b["closed_unmerged_total"]
+        rows.append({
+            "repo": repo,
+            "pct_blocked_of_merged": pct(nm, 100),
+            "pct_blocked_of_closed": pct(nc, 100),
+            "merged_total": b["merged_total"],
+            "closed_unmerged_total": b["closed_unmerged_total"],
+            "pct_closed_given_blocked": round(100 * ec / (em + ec), 1) if em + ec else 0.0,
+            "estimate_unstable": nm == 0,      # 分子为 0 时该估计不稳，正文须标注
+        })
+    write_table("t12_blocked_pr_fate_by_repo.csv", rows, list(rows[0]) if rows else [])
+    S["d9_by_repo"] = {r["repo"]: r for r in rows}
+    stable = [r for r in rows if not r["estimate_unstable"]]
+    S["d9_pcgb_min"] = min(r["pct_closed_given_blocked"] for r in stable)
+    S["d9_pcgb_max"] = max(r["pct_closed_given_blocked"] for r in stable)
+    S["d9_pcgb_min_repo"] = min(stable, key=lambda r: r["pct_closed_given_blocked"])["repo"]
+    S["d9_pcgb_max_repo"] = max(stable, key=lambda r: r["pct_closed_given_blocked"])["repo"]
+    S["d9_n_repos_stable"] = len(stable)
+
+    # ---- (b) 未合并的一侧
+    # 时长一律取自 D2 快照里冻结的 closedAt，而非 D9 重取的当前值：至少有一个 PR 在基准日
+    # 之后被重开，其 closedAt 变回 null，若用当前值会让分母从 38 静默降到 37。状态漂移
+    # 单独计数上报，不允许它污染时长统计。
+    frozen = {f"{r}#{p['number']}": p for r, prs in d2.items() for p in prs}
+    days, drifted = [], 0
+    for k, p in bc.items():
+        f = frozen.get(k)
+        if f and f.get("closedAt"):
+            days.append((ts(f["closedAt"]) - ts(f["createdAt"])).total_seconds() / 86400)
+        if not p.get("closedAt"):
+            drifted += 1
+    S["d9_closed_n_reopened_since_baseline"] = drifted
+    S["d9_closed_n_with_duration"] = len(days)
+    closes = [[n for n in p["timelineItems"]["nodes"] if n["__typename"] == "ClosedEvent"]
+              for p in bc.values()]
+    reopens = [sum(1 for n in p["timelineItems"]["nodes"] if n["__typename"] == "ReopenedEvent")
+               for p in bc.values()]
+    botclosed = sum(1 for cs in closes if any(
+        BOT_RE.search(((c.get("actor") or {}).get("login") or "")) for c in cs))
+    S["d9_closed_median_days"] = round(med(days), 1)
+    S["d9_closed_p90_days"] = round(q(days, 0.9), 1)
+    S["d9_closed_max_days"] = round(max(days), 1) if days else 0
+    S["d9_closed_pct_over_90d"] = pct(sum(1 for d in days if d > 90), len(days))
+    S["d9_closed_median_reviews"] = int(med([p["reviews"]["totalCount"] for p in bc.values()]))
+    S["d9_closed_median_comments"] = int(med([p["comments"]["totalCount"] for p in bc.values()]))
+    S["d9_closed_pct_bot_closed"] = pct(botclosed, len(bc))
+    S["d9_closed_pct_oscillated"] = pct(sum(1 for r in reopens if r >= 1), len(reopens))
+    S["d9_closed_max_close_events"] = max((len(c) for c in closes), default=0)
+    # 对照组：同样关闭未合并、但从未被正式阻塞
+    nb = [(ts(p["closedAt"]) - ts(p["createdAt"])).total_seconds() / 86400
+          for prs in d2.values() for p in prs
+          if p.get("closedAt") and not p.get("mergedAt") and cr_count(p) == 0]
+    S["d9_unblocked_closed_n"] = len(nb)
+    S["d9_unblocked_closed_median_days"] = round(med(nb), 1)
+    S["d9_rot_ratio"] = round(med(days) / med(nb), 1) if med(nb) else 0.0
+
+    # ---- (c) 合并的一侧：从首次阻塞到合并
+    gaps, after, both = [], [], 0
+    for p in bm.values():
+        revs = sorted((r for r in p["reviews"]["nodes"] if r.get("submittedAt")),
+                      key=lambda r: r["submittedAt"])
+        crs = [r for r in revs if r["state"] == "CHANGES_REQUESTED"]
+        if not crs:
+            continue
+        t0 = ts(crs[0]["submittedAt"])
+        gaps.append((ts(p["mergedAt"]) - t0).total_seconds() / 86400)
+        after.append(sum(1 for r in revs if ts(r["submittedAt"]) > t0))
+        blockers = {r["author"]["login"] for r in crs if r["author"]}
+        approvers = {r["author"]["login"] for r in revs
+                     if r["state"] == "APPROVED" and r["author"]}
+        both += bool(blockers & approvers)
+    S["d9_merged_median_days_block_to_merge"] = round(med(gaps), 1)
+    # 与另外两组同口径（创建 → 终态），使三者可以画在同一根轴上
+    S["d9_merged_median_days_create_to_merge"] = round(med(
+        [(ts(p["mergedAt"]) - ts(p["createdAt"])).total_seconds() / 86400
+         for p in bm.values()]), 1)
+    S["d9_merged_max_days_block_to_merge"] = round(max(gaps), 1) if gaps else 0
+    S["d9_merged_median_reviews_after_block"] = int(med(after))
+    S["d9_merged_pct_blocker_also_approved"] = pct(both, len(bm))
+
+    # ---- 补丁死了，工作是否被接续（弱信号：交叉引用不等于取代）
+    sup = sum(1 for p in bc.values() if any(
+        n["__typename"] == "CrossReferencedEvent" and (n.get("source") or {}).get("merged")
+        for n in p["timelineItems"]["nodes"]))
+    S["d9_closed_n_xref_merged_pr"] = sup
+    S["d9_closed_pct_xref_merged_pr"] = pct(sup, len(bc))
+    S["d9_gaps"] = d9.get("gaps", [])
+
+
 def corpus_size() -> None:
     """全部数据集去重后的不同 PR 数。
 
@@ -692,6 +814,7 @@ def main() -> None:
     analyze_case_a()
     analyze_case_b()
     analyze_d7()
+    analyze_d9()
     build_comparison()
     corpus_size()
     man = load("manifest.json") or {}

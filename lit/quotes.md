@@ -211,6 +211,90 @@
 
 ---
 
+## 4. 循环未收敛时的去向
+
+### 4.1 PR 被放弃的原因与整合者的应对（wang2021，TSE 2021）
+
+> We manually examine 321 abandoned pull requests on GitHub and then quantify the manual observations by surveying 710 OSS developers.
+
+原因侧，本报告只引用与「共识失败」直接相关的一条（原文 RQ1 的编码表 R8）：
+
+> 17.7% of con- tributors abandoned their pull requests due to the lack of consensus among integrators.
+
+> R8 Integrators do not reach a consensus Process 17.7
+
+应对侧（原文 Table 5「Strategies used to cope with abandoned pull requests」，票数占比）。PDF 抽取时表格被折进正文，故连同上下文逐字录入：
+
+> If a pull request is aban- S1 Assign a successor to take it over 66.7 doned, the progress of the pull request that depends on it is S2 Close it to clean pull request list 60.2 affected … S3 Picked up by volunteers spontaneously 42.3
+
+> S6 Merge as it is and iterate over it 12.8
+
+> Therefore, we can notice that 66.7% of integrators assigned successors to take over abandoned pull requests.
+
+即：**指派接手人 66.7% / 关闭 60.2% / 志愿者自发接手 42.3% / 向社区广播 37.2% / 改用重复 PR 23.1% / 就这么合并再迭代 12.8%**。本报告引用其中的 66.7% 与 12.8%。
+
+移交机制的缺口：
+
+> we also uncovered a novel need for a handover mechanism in social coding platforms, since approximately two-thirds of integrators simply closed abandoned pull requests al- though most contributors expressed that they were willing [to pick up pull requests abandoned by others]
+
+### 4.2 时间压力（arXiv 1901.05771，IST 2020）
+
+> \textbf{Method}: Our search strategy examined 5,414 sources, found through repository searches and snowballing.
+
+> Applying inclusion and exclusion criteria resulted in the selection of 102 papers, which made relevant contributions related to time pressure in software engineering.
+
+> \textbf{Results}: The majority of high quality studies report increased productivity and decreased quality under time pressure.
+
+> The effect of time pressure is most often identified during software quality assurance.
+
+最后一句是本报告用来论证「先发后修把成本推到下游」的承重引文：**代价在 QA 阶段才显现**。
+
+### 4.3 技术债的兑现率（potdar2014，ICSME 2014；maldonado2017，ICSME 2017）
+
+> We find that the amount of self-admitted technical debt exists in 2.4% - 31% of the files.
+
+> even after many releases only between 26.3% - 63.5% of self-admitted technical debt is removed
+
+移除侧的规模与时长：
+
+> In total, we examine 5,733 SATD re-[movals]
+
+> in the studied projects the removal ranges between 40.5–90.6%, and on average 74.9% of the identified [SATD is removed]
+
+> the time that self-admitted technical debt stays in a project varies from one project to another: medians range between 18.2–172.8 days and averages—82–613.2 days.
+
+> On average 54.4% of self-admitted technical debt is self-removed and on median 61.0% is self-[removed]
+
+**一处对二手转述的更正**：网络摘要常把上述时长写成「中位 82–613.2 天」。原文是**均值** 82–613.2 天、**中位** 18.2–172.8 天，两者不可互换；平均移除率是 **74.9%** 而非 74.4%。本报告采用原文数值。
+
+### 4.4 agent PR 的失败去向（arXiv 2601.15195，MSR 2026）
+
+> Of the 33,596 agentic pull requests, the majority originate from OpenAI Codex (21,799), exceeding the output of any other agent by more than a factor of four.
+
+> \textsc{\textbf{Reviewer}}-level abandonment is the most frequent rejection pattern, accounting for 228 PRs (38\%).
+
+> Within this level, duplicate PRs are the most common pattern, affecting 142 PRs (23\%), where maintainers explicitly reference an existing PR that already implements the same change.
+
+回归部分是本报告「加轮次无用」这一主张的承重引文：
+
+> Based on Cliff's $\delta$ (Table~\ref{tab:logit_effect}), the difference in total lines of code changes is 17\%, and the difference in the number of changed files is 10\%, both indicating a small-to-medium effect size that not-merged PRs skew toward larger changes.
+
+> Based on Cliff's $\delta$ (Table~\ref{tab:logit_effect}), developers make approximately 5\% more \textit{review comments} and 3\% more \textit{revisions} on not-merged PRs compared to merged PRs, although the effect sizes for both are small.
+
+> Based on the $p$-values, all variables except \#\textit{review comments} and \#\textit{review revisions} are significant (threshold at $0.05$).
+
+> Notably, each additional \textit{failed CI check} decreases the odds of a merge by about 15\%.
+
+**时效性说明**：该文未报告数据采集截止日期（仅可见 2026-01-21 的 arXiv 提交时间），按 §4.1 的判据，其中「各 agent 合并率」等产品能力型数字只能作快照使用；而「规模与 CI 显著、讨论量不显著」属结构型结论。
+
+### 4.5 评审中的人际冲突（arXiv 2201.05425）
+
+> Through the thematic analysis of interviews conducted with 22 developers, we confirm that conflicts during code reviews are commonplace, anticipated and seen as normal by developers.
+
+本报告只引用其定性结论（冲突是常态、需要被管理而非避免），不引用其数值。同一作者群的 ICSE-SEIP 2024 后续研究报告了 154 名开发者中 77% 遇到过冲突，但本项目**未能取得该文全文**，故不引用该数值。
+
+---
+
 ## 9. 已撤销的引用
 
 学术诚实要求把「查证未通过」与「查证通过」同等落盘。以下数值曾出现在本项目的早期草稿中，经全文核对后**未能在所引原文中定位**，已从正文全部移除。

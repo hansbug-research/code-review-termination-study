@@ -5,3 +5,6 @@ cycle,round,label,blocking_open,resolved_this_round,introduced_this_round,note
 1,4,verifier 终态,0,1,0,非评审轮，由新增断言确认
 2,1,第 1 轮自审,3,0,3,外部评审触发的引用体系变更
 2,2,verifier 终态,0,3,0,非评审轮，由 6 条引用完整性断言确认
+3,1,第 1 轮自审,6,0,6,范围固定后的完整重扫
+3,2,第 2 轮自审,1,6,1,「六项」指代歧义
+3,3,verifier 终态,0,1,0,非评审轮，由 9 条计数断言确认

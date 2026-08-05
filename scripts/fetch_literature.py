@@ -68,6 +68,16 @@ LITERATURE = [
      "https://yuyue.github.io/res/paper/msr2015.pdf"),
     ("thongtanunam2016", "pdf", 2, "Review Participation in Modern Code Review",
      "https://sailresearch.github.io/sail-website/data/pdfs/EMSE2016_ReviewParticipationInModernCodeReviewAnEmpiricalStudyOfTheAndroidQtAndOpenStackProjects.pdf"),
+    # ---- 循环未收敛时的去向：放弃、冲突、时间压力、技术债兑现 ----
+    ("wang2021", "pdf", 1, "Are You Still Working on This? An Empirical Study on Pull Request Abandonment",
+     "https://whystar.github.io/res/paper/abPR_TSE2021.pdf"),
+    ("2201.05425", "arxiv", 1, "Interpersonal Conflicts During Code Review: Developers' Experience and Practices"),
+    ("1901.05771", "arxiv", 1, "Time Pressure in Software Engineering: A Systematic Review"),
+    ("potdar2014", "pdf", 1, "An Exploratory Study on Self-Admitted Technical Debt",
+     "http://users.encs.concordia.ca/~eshihab/pubs/Potdar_ICSME2014.pdf"),
+    ("maldonado2017", "pdf", 1, "An Empirical Study on the Removal of Self-Admitted Technical Debt",
+     "https://pure.tue.nl/ws/files/125006035/ICSME2017.pdf"),
+    ("2601.15195", "arxiv", 1, "Where Do AI Coding Agents Fail? An Empirical Study of Failed Agentic Pull Requests in GitHub"),
 ]
 
 

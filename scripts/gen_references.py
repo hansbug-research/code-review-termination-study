@@ -14,7 +14,8 @@
 排序）。因此重跑本脚本不会产生无谓的编号漂移。
 
 正文中的引用写作 `[[12]](#ref-sadowski2018)`，渲染为可点击的 `[12]`。链接目标里带 key，
-使得「编号 ↔ 文献」这一映射本身可被 verify.py 核对，而不是只能靠人眼比对。
+使得「编号 ↔ 文献」这一映射本身可被 verify.py 核对，而不是只能靠人眼比对；并且**编号由本
+脚本按 key 重写**——新增一篇文献会让排序后的编号整体漂移，手工对齐必然出错。
 
 用法：
     python3 scripts/gen_references.py            # 生成并回填
@@ -148,6 +149,23 @@ def main() -> int:
         return 2
     new = re.sub(re.escape(BEGIN) + r".*?" + re.escape(END), block.rstrip(), text, flags=re.S)
 
+    # 正文引用的编号由本脚本接管：`[[12]](#ref-key)` 里的 key 是权威的，数字只是渲染出来
+    # 给人看的。新增一篇文献会让排序后的编号整体漂移，手工对齐必然出错（本项目已踩过），
+    # 因此这里按 key 重写全部编号。verify.py 随后核对二者一致。
+    num = {r["key"]: i + 1 for i, r in enumerate(ordered)}
+    renumbered = 0
+
+    def fix(m: re.Match) -> str:
+        nonlocal renumbered
+        key, old = m.group(2), m.group(1)
+        if key not in num:
+            return m.group(0)          # 孤儿引用交给 verify.py 报错，此处不静默改写
+        if str(num[key]) != old:
+            renumbered += 1
+        return f"[[{num[key]}]](#ref-{key})"
+
+    new = re.sub(r"\[\[(\d+)\]\]\(#ref-([^)]+)\)", fix, new)
+
     bib = "\n\n".join(bibtex(r, i + 1) for i, r in enumerate(ordered)) + "\n"
     bib = ("% 由 scripts/gen_references.py 从 lit/references.json 生成，请勿手工编辑。\n"
            "% 著录信息取自 arXiv Atom API 与 DBLP 检索 API，取回日期见各条 urldate 或"
@@ -160,7 +178,8 @@ def main() -> int:
 
     REPORT.write_text(new)
     (ROOT / "references.bib").write_text(bib)
-    print(f"参考文献 {len(ordered)} 条已回填 report.md，并写入 references.bib")
+    print(f"参考文献 {len(ordered)} 条已回填 report.md，并写入 references.bib"
+          f"；正文引用编号重写 {renumbered} 处")
     for i, r in enumerate(ordered):
         print(f"  [{i+1:>2}] {r['key']:<20} {surname(r['authors'][0])}")
     return 0

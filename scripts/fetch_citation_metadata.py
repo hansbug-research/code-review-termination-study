@@ -74,6 +74,18 @@ WEB_SOURCES: list[dict] = [
      "author": "OpenAI", "year": "2026",
      "title": "GitHub Code Reviews", "container": "OpenAI Codex Documentation",
      "url": "https://learn.chatgpt.com/use-cases/github-code-reviews"},
+    {"key": "feature-toggles", "kind": "web",
+     "author": "Pete Hodgson", "year": "2017",
+     "title": "Feature Toggles (aka Feature Flags)", "container": "martinfowler.com",
+     "url": "https://martinfowler.com/articles/feature-toggles.html"},
+    {"key": "sre-embracing-risk", "kind": "web",
+     "author": "Marc Alvidrez", "year": "2016",
+     "title": "Embracing Risk", "container": "Site Reliability Engineering (Google)",
+     "url": "https://sre.google/sre-book/embracing-risk/"},
+    {"key": "xen-disagreement", "kind": "web",
+     "author": "Xen Project", "year": "2026",
+     "title": "Resolving Disagreement", "container": "Xen Project Governance",
+     "url": "http://xenbits.xenproject.org/governance/resolving-disagreement.html"},
     {"key": "github-citation", "kind": "web",
      "author": "GitHub", "year": "2026",
      "title": "About CITATION files", "container": "GitHub Docs",
@@ -89,7 +101,7 @@ TITLE_OVERRIDES = {
 }
 
 
-def curl(url: str, tries: int = 6, expect: str = "") -> str:
+def curl(url: str, tries: int = 8, expect: str = "") -> str:
     """取回 url。expect 给出响应必须以之开头的字符（DBLP 限流时会返回 HTML 而非 JSON，
     若不校验就会在下游炸成 JSONDecodeError 并中断整批）。"""
     last = ""
@@ -100,7 +112,7 @@ def curl(url: str, tries: int = 6, expect: str = "") -> str:
         if p.returncode == 0 and body and (not expect or body[0] in expect):
             return p.stdout
         last = (body[:80] or p.stderr.strip()[:80])
-        time.sleep(min(2 ** attempt, 30))
+        time.sleep(min(2 ** attempt, 60))
     raise RuntimeError(f"取回失败：{url}（最后一次响应：{last!r}）")
 
 
@@ -176,16 +188,29 @@ def main() -> None:
     args = ap.parse_args()
 
     rows = list(csv.DictReader((LIT / "manifest.csv").open(encoding="utf-8")))
+    # 上一次的结果，用于接口失败时回落。整批中断违反本仓库「记录缺口而非中断」的原则
+    # （见 report.md §3.3），且会让一次限流毁掉全部已取回的著录信息。
+    prev_path = LIT / "references.json"
+    prev = {r["key"]: r for r in json.loads(prev_path.read_text())} if prev_path.exists() else {}
+    reused: list[str] = []
     out: list[dict] = []
     for r in rows:
         rec = {"key": r["key"], "kind": r["kind"], "tier": int(r["tier"]),
                "manifest_title": r["title"], "url": r["url"], "sha256": r["sha256"],
                "accessed": args.accessed}
-        if r["kind"] == "arxiv":
-            rec["arxiv_id"] = r["key"]
-            rec.update(fetch_arxiv(r["key"]))
-        else:
-            rec.update(fetch_dblp(TITLE_OVERRIDES.get(r["key"], r["title"])))
+        try:
+            if r["kind"] == "arxiv":
+                rec["arxiv_id"] = r["key"]
+                rec.update(fetch_arxiv(r["key"]))
+            else:
+                rec.update(fetch_dblp(TITLE_OVERRIDES.get(r["key"], r["title"])))
+        except RuntimeError as exc:
+            old = prev.get(r["key"])
+            if not old or not old.get("authors"):
+                raise
+            rec.update({k: v for k, v in old.items() if k not in rec})
+            rec["refetch_failed"] = str(exc)[:120]
+            reused.append(r["key"])
         out.append(rec)
         who = ", ".join(rec.get("authors", [])[:2]) or "未命中"
         print(f"  {r['key']:<16} {who}", flush=True)
@@ -199,6 +224,8 @@ def main() -> None:
         json.dumps(out, ensure_ascii=False, indent=1, sort_keys=True))
     n_ok = sum(1 for r in out if r.get("authors"))
     print(f"\n写入 lit/references.json：{len(out)} 条，其中 {n_ok} 条有作者信息")
+    if reused:
+        print(f"  接口失败、沿用上次著录的：{len(reused)} 条 -> {', '.join(reused)}")
     for r in out:
         if not r.get("authors"):
             print(f"  !! 缺作者：{r['key']}（match_score={r.get('match_score')}）")

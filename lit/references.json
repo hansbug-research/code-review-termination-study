@@ -341,6 +341,7 @@
   "manifest_title": "Modern Code Review: A Case Study at Google",
   "match_score": 1.0,
   "matched": true,
+  "refetch_failed": "取回失败：https://dblp.org/search/publ/api?q=Modern%20Code%20Review%20%20A%20Case%20Study%20at%20Google&format=json&h=8（最后一次响",
   "sha256": "299c18e1da4dc75f43327fcf7c9f51232f400aab6873bafb28a6ddf623133eec",
   "source_api": "dblp",
   "tier": 1,
@@ -362,6 +363,7 @@
   "manifest_title": "Convergent Contemporary Software Peer Review Practices",
   "match_score": 1.0,
   "matched": true,
+  "refetch_failed": "取回失败：https://dblp.org/search/publ/api?q=Convergent%20Contemporary%20Software%20Peer%20Review%20Practices&format=json&h=8",
   "sha256": "68e2faff6ff924e21f112ab98d8909c865697980d38ebaf11dfdcb7e9662c0f0",
   "source_api": "dblp",
   "tier": 1,
@@ -504,6 +506,142 @@
   "url": "https://sailresearch.github.io/sail-website/data/pdfs/EMSE2016_ReviewParticipationInModernCodeReviewAnEmpiricalStudyOfTheAndroidQtAndOpenStackProjects.pdf",
   "venue": "Empir. Softw. Eng.",
   "year": "2017"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Zhixing Li",
+   "Yue Yu 0001",
+   "Tao Wang 0006",
+   "Gang Yin",
+   "ShanShan Li 0001",
+   "Huaimin Wang 0001"
+  ],
+  "dblp_url": "https://dblp.org/rec/journals/tse/LiYWYLW22",
+  "doi": "10.1109/TSE.2021.3053403",
+  "key": "wang2021",
+  "kind": "pdf",
+  "manifest_title": "Are You Still Working on This? An Empirical Study on Pull Request Abandonment",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "f3aab86087274f901b436917d29af1acc6a041feabe702bcac9ec0c97f642896",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "Are You Still Working on This? An Empirical Study on Pull Request Abandonment",
+  "url": "https://whystar.github.io/res/paper/abPR_TSE2021.pdf",
+  "venue": "IEEE Trans. Software Eng.",
+  "year": "2022"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2201.05425",
+  "authors": [
+   "Pavlína Wurzel Gonçalves",
+   "Gül Çalıklı",
+   "Alberto Bacchelli"
+  ],
+  "doi": "",
+  "key": "2201.05425",
+  "kind": "arxiv",
+  "manifest_title": "Interpersonal Conflicts During Code Review: Developers' Experience and Practices",
+  "primary_category": "cs.SE",
+  "published": "2022-01-14",
+  "sha256": "f8b6a21f7251591797a304ef182dad4b3a344f03c34592a6f8f73c20bfaf845b",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Interpersonal Conflicts During Code Review",
+  "updated": "2022-01-14",
+  "url": "https://arxiv.org/e-print/2201.05425"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "1901.05771",
+  "authors": [
+   "Miikka Kuutila",
+   "Mika Mäntylä",
+   "Umar Farooq",
+   "Maëlick Claes"
+  ],
+  "doi": "10.1016/j.infsof.2020.106257",
+  "key": "1901.05771",
+  "kind": "arxiv",
+  "manifest_title": "Time Pressure in Software Engineering: A Systematic Review",
+  "primary_category": "cs.SE",
+  "published": "2019-01-17",
+  "sha256": "da0b15d28fdff3b0abb9a9c23dfe938bcda8183e2b54523cb080dc794bdb77ae",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Time Pressure in Software Engineering: A Systematic Review",
+  "updated": "2020-01-09",
+  "url": "https://arxiv.org/e-print/1901.05771"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Aniket Potdar",
+   "Emad Shihab"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/icsm/PotdarS14",
+  "doi": "10.1109/ICSME.2014.31",
+  "key": "potdar2014",
+  "kind": "pdf",
+  "manifest_title": "An Exploratory Study on Self-Admitted Technical Debt",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "31ac2cffdfa19adbddc581b25912263ce50c79677274e9d9f5b90c2abeecaaa1",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "An Exploratory Study on Self-Admitted Technical Debt",
+  "url": "http://users.encs.concordia.ca/~eshihab/pubs/Potdar_ICSME2014.pdf",
+  "venue": "ICSME",
+  "year": "2014"
+ },
+ {
+  "accessed": "2026-08-04",
+  "authors": [
+   "Everton da S. Maldonado",
+   "Rabe Abdalkareem",
+   "Emad Shihab",
+   "Alexander Serebrenik"
+  ],
+  "dblp_url": "https://dblp.org/rec/conf/icsm/MaldonadoASS17",
+  "doi": "10.1109/ICSME.2017.8",
+  "key": "maldonado2017",
+  "kind": "pdf",
+  "manifest_title": "An Empirical Study on the Removal of Self-Admitted Technical Debt",
+  "match_score": 1.0,
+  "matched": true,
+  "sha256": "37d246d4d0e841f215f60dcca4596515689cd64f6e2b43e6fffd72f178957914",
+  "source_api": "dblp",
+  "tier": 1,
+  "title": "An Empirical Study on the Removal of Self-Admitted Technical Debt",
+  "url": "https://pure.tue.nl/ws/files/125006035/ICSME2017.pdf",
+  "venue": "ICSME",
+  "year": "2017"
+ },
+ {
+  "accessed": "2026-08-04",
+  "arxiv_id": "2601.15195",
+  "authors": [
+   "Ramtin Ehsani",
+   "Sakshi Pathak",
+   "Shriya Rawal",
+   "Abdullah Al Mujahid",
+   "Mia Mohammad Imran",
+   "Preetha Chatterjee"
+  ],
+  "doi": "",
+  "key": "2601.15195",
+  "kind": "arxiv",
+  "manifest_title": "Where Do AI Coding Agents Fail? An Empirical Study of Failed Agentic Pull Requests in GitHub",
+  "primary_category": "cs.SE",
+  "published": "2026-01-21",
+  "sha256": "1b5b7a6c91b1bc61c9d424546e423e12425570d3007d6b8d5b295dc1bfe18625",
+  "source_api": "arxiv",
+  "tier": 1,
+  "title": "Where Do AI Coding Agents Fail? An Empirical Study of Failed Agentic Pull Requests in GitHub",
+  "updated": "2026-01-21",
+  "url": "https://arxiv.org/e-print/2601.15195"
  },
  {
   "accessed": "2026-08-04",
@@ -668,6 +806,51 @@
   "tier": 1,
   "title": "GitHub Code Reviews",
   "url": "https://learn.chatgpt.com/use-cases/github-code-reviews",
+  "year": "2026"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Pete Hodgson",
+  "authors": [
+   "Pete Hodgson"
+  ],
+  "container": "martinfowler.com",
+  "key": "feature-toggles",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Feature Toggles (aka Feature Flags)",
+  "url": "https://martinfowler.com/articles/feature-toggles.html",
+  "year": "2017"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Marc Alvidrez",
+  "authors": [
+   "Marc Alvidrez"
+  ],
+  "container": "Site Reliability Engineering (Google)",
+  "key": "sre-embracing-risk",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Embracing Risk",
+  "url": "https://sre.google/sre-book/embracing-risk/",
+  "year": "2016"
+ },
+ {
+  "accessed": "2026-08-04",
+  "author": "Xen Project",
+  "authors": [
+   "Xen Project"
+  ],
+  "container": "Xen Project Governance",
+  "key": "xen-disagreement",
+  "kind": "web",
+  "source_api": "manual",
+  "tier": 1,
+  "title": "Resolving Disagreement",
+  "url": "http://xenbits.xenproject.org/governance/resolving-disagreement.html",
   "year": "2026"
  },
  {

@@ -1,0 +1,5 @@
+repo,pct_blocked_of_merged,pct_blocked_of_closed,merged_total,closed_unmerged_total,pct_closed_given_blocked,estimate_unstable
+kubernetes/kubernetes,1.0,11.0,3248,1591,84.3,False
+rust-lang/rust,7.0,2.0,7691,2533,8.6,False
+nodejs/node,2.0,11.0,2308,1147,73.2,False
+python/cpython,0.0,8.0,9348,1436,100.0,True
